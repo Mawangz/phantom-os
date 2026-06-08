@@ -836,6 +836,7 @@ body.safe-mode .micro-shake {
 .chat-msg {
   margin-bottom: 8px;
   word-break: break-all;
+  white-space: pre-wrap;
 }
 
 .chat-msg-phantom {
