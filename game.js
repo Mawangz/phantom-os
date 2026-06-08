@@ -818,11 +818,24 @@ function openWindow(programId, title, iconSvg, innerHTML) {
 
   const win = document.createElement('div');
   win.id = programId;
-  const isResizable = ['explorer_win', 'rules_win', 'terminal_win', 'chat_win', 'recycle_bin_win'].includes(programId) || programId.startsWith('notepad_');
+  const isResizable = ['explorer_win', 'rules_win', 'terminal_win', 'chat_win', 'recycle_bin_win', 'welcome_win'].includes(programId) || programId.startsWith('notepad_');
   win.className = `window active-window ${isResizable ? 'resizable' : ''}`;
   
-  const width = Math.min(480, window.innerWidth - 40);
-  const height = Math.min(360, window.innerHeight - 80);
+  let defaultW = 680;
+  let defaultH = 460;
+  if (programId === 'audio_settings_win' || programId === 'language_win') {
+    defaultW = 320;
+    defaultH = 200;
+  } else if (programId === 'puzzle_win') {
+    defaultW = 400;
+    defaultH = 340;
+  } else if (programId === 'welcome_win') {
+    defaultW = 600;
+    defaultH = 400;
+  }
+
+  const width = Math.min(defaultW, window.innerWidth - 40);
+  const height = Math.min(defaultH, window.innerHeight - 80);
   const left = Math.max(20, (window.innerWidth - width) / 2 + (Object.keys(openWindows).length * 15));
   const top = Math.max(40, (window.innerHeight - height) / 2 + (Object.keys(openWindows).length * 15));
   
