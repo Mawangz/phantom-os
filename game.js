@@ -1001,11 +1001,11 @@ function openWelcomeScreen() {
           <svg viewBox="0 0 24 24" fill="#0000a0" style="width: 48px; height: 48px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
         </div>
         <div style="color: #000000;">
-          <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 12px; color: #000080; letter-spacing: 0.5px;">${t('welcome_header')}</h2>
-          <p style="font-size: 14px; line-height: 1.5; color: #333; margin-bottom: 14px;">
+          <h2 style="font-size: 21px; font-weight: bold; margin-bottom: 12px; color: #000080; letter-spacing: 0.5px;">${t('welcome_header')}</h2>
+          <p style="font-size: 15px; line-height: 1.5; color: #333; margin-bottom: 14px;">
             ${t('welcome_desc')}
           </p>
-          <ul style="font-size: 14px; line-height: 1.6; color: #000; padding-left: 20px; margin-bottom: 14px; list-style-type: square;">
+          <ul style="font-size: 15px; line-height: 1.6; color: #000; padding-left: 20px; margin-bottom: 14px; list-style-type: square;">
             <li>${t('welcome_bullet_explore')}</li>
             <li>${t('welcome_bullet_diag')}</li>
             <li>${t('welcome_bullet_decrypt')}</li>
@@ -1014,11 +1014,11 @@ function openWelcomeScreen() {
         </div>
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--win-border-dark); padding-top: 10px; margin-top: 10px;">
-        <label style="font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
+        <label style="font-size: 15px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
           <input type="checkbox" id="welcome-show-next" checked style="cursor: pointer; transform: scale(1.1); margin-right: 4px;">
           ${t('welcome_show_next')}
         </label>
-        <button class="win-btn" style="padding: 6px 25px; font-weight: bold; background: #c0c0c0; color: #000; font-family: var(--sys-font); font-size: 14px;" onclick="closeWelcomeScreen()">${t('welcome_close_btn')}</button>
+        <button class="win-btn" style="padding: 6px 25px; font-weight: bold; background: #c0c0c0; color: #000; font-family: var(--sys-font); font-size: 15px;" onclick="closeWelcomeScreen()">${t('welcome_close_btn')}</button>
       </div>
     </div>
   `;
@@ -1331,11 +1331,11 @@ function openLanguageSettings() {
           ${t('lang_select_title')}
         </p>
         <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 11px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px;">
             <input type="radio" name="lang-choice" value="ko" ${currentLang === 'ko' ? 'checked' : ''} style="cursor: pointer;">
             한국어 (Korean)
           </label>
-          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 11px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 12px;">
             <input type="radio" name="lang-choice" value="en" ${currentLang === 'en' ? 'checked' : ''} style="cursor: pointer;">
             English (영어)
           </label>
@@ -1366,7 +1366,7 @@ window.saveLanguageSetting = function() {
       const rebootIcon = `<svg viewBox="0 0 24 24" fill="#000080"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>`;
       const rebootHtml = `
         <div style="padding: 10px; font-family: var(--sys-font); text-align: center; color: #000;">
-          <p style="margin-bottom: 15px; font-size: 11px; line-height: 1.4;">
+          <p style="margin-bottom: 15px; font-size: 12px; line-height: 1.4;">
             ${selected === 'ko' 
               ? '시스템 언어 설정이 변경되었습니다.<br>설정을 적용하려면 가상 시스템을 재부팅해야 합니다.'
               : 'System language settings have been changed.<br>You must reboot the virtual OS to apply changes.'}
@@ -1556,7 +1556,7 @@ function openRecycleBin() {
       <div style="text-align: center; padding: 20px;">
         <svg viewBox="0 0 24 24" fill="#808080" style="width: 48px; height: 48px; margin-bottom: 10px;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         <div style="font-weight: bold; margin-bottom: 10px;">${t('bin_corrupted_title')}</div>
-        <p style="font-size: 11px; color: #555;">${t('bin_corrupted_desc')}</p>
+        <p style="font-size: 12px; color: #555;">${t('bin_corrupted_desc')}</p>
       </div>
     `;
   }
@@ -3042,7 +3042,7 @@ function spawnPhantomPopup() {
 
   const content = `
     <div style="font-family: var(--sys-font); padding: 5px; color: #000; text-align: center;">
-      <p style="margin-bottom: 15px; font-size: 11px; line-height: 1.4; font-weight: bold;">
+      <p style="margin-bottom: 15px; font-size: 12px; line-height: 1.4; font-weight: bold;">
         ${alertText}
       </p>
       <button class="win-btn" style="padding: 2px 20px;" onclick="closeWindow('${popupId}')">${currentLang === 'ko' ? '확인' : 'OK'}</button>
@@ -3759,31 +3759,31 @@ function getPuzzleHTML() {
   
   return `
     <div class="puzzle-container" style="color: #000; font-family: var(--sys-font); display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; padding: 12px;">
-      <div style="font-size: 14px; color:#333; margin-bottom: 12px; line-height: 1.4;">
+      <div style="font-size: 15px; color:#333; margin-bottom: 12px; line-height: 1.4;">
         ${t('puzzle_desc')}
       </div>
-      <div style="font-weight: bold; font-size: 14px; color: #000080; margin-bottom: 12px;" id="puzzle-level-indicator">
+      <div style="font-weight: bold; font-size: 15px; color: #000080; margin-bottom: 12px;" id="puzzle-level-indicator">
         ${t('puzzle_level')}: ${puzzleLevel} / 3
       </div>
       
-      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 15px; font-family: var(--term-font); font-size: 16px; background: #e0e0e0; border: 1px solid #808080; padding: 10px; border-radius:4px; box-shadow: inset 1px 1px 2px #555; height: 135px;">
+      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 15px; font-family: var(--term-font); font-size: 17px; background: #e0e0e0; border: 1px solid #808080; padding: 10px; border-radius:4px; box-shadow: inset 1px 1px 2px #555; height: 135px;">
         <div style="text-align: center;">
-          <div style="font-size: 11px; font-weight: bold; color: #555; margin-bottom: 5px;">ORIGINAL</div>
-          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 16px;" id="puzzle-art-left">${leftArt}</pre>
+          <div style="font-size: 12px; font-weight: bold; color: #555; margin-bottom: 5px;">ORIGINAL</div>
+          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 17px;" id="puzzle-art-left">${leftArt}</pre>
         </div>
         <div style="font-size: 18px; font-weight: bold; color: #888;">vs</div>
         <div style="text-align: center;">
-          <div style="font-size: 11px; font-weight: bold; color: #555; margin-bottom: 5px;">CORRUPTED</div>
-          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 16px;" id="puzzle-art-right">${rightArt}</pre>
+          <div style="font-size: 12px; font-weight: bold; color: #555; margin-bottom: 5px;">CORRUPTED</div>
+          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 17px;" id="puzzle-art-right">${rightArt}</pre>
         </div>
       </div>
       
       <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-        <input type="text" id="puzzle-answer-input" style="width: 80px; text-align: center; font-size: 16px; padding: 4px; border: 1px solid #808080; font-family: var(--term-font);" maxlength="1" placeholder="?">
+        <input type="text" id="puzzle-answer-input" style="width: 80px; text-align: center; font-size: 17px; padding: 4px; border: 1px solid #808080; font-family: var(--term-font);" maxlength="1" placeholder="?">
         <button class="win-btn" style="padding: 4px 20px;" onclick="submitPuzzleAnswer()">${t('puzzle_submit_btn')}</button>
       </div>
       
-      <div id="puzzle-status" style="font-size: 14px; font-weight: bold; height: 22px; display: flex; align-items: center;"></div>
+      <div id="puzzle-status" style="font-size: 15px; font-weight: bold; height: 22px; display: flex; align-items: center;"></div>
     </div>
   `;
 }

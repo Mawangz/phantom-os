@@ -92,7 +92,7 @@ body {
    ========================================================================== */
 .desktop {
   width: 100%;
-  height: calc(100vh - 46px);
+  height: calc(100vh - 48px);
   position: relative;
   padding: 20px;
   display: flex;
@@ -104,8 +104,8 @@ body {
 
 /* Desktop Icon Style */
 .desktop-icon {
-  width: 115px;
-  height: 115px;
+  width: 120px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,13 +113,13 @@ body {
   text-align: center;
   cursor: pointer;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   text-shadow: 1px 1px 1px #000000;
 }
 
 .desktop-icon svg {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   margin-bottom: 5px;
   filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.5));
 }
@@ -148,7 +148,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 46px;
+  height: 48px;
   background-color: var(--win-bg);
   border-top: 2px solid var(--win-border-light);
   display: flex;
@@ -166,7 +166,7 @@ body {
   padding: 3px 8px;
   font-weight: bold;
   font-family: var(--sys-font);
-  font-size: 15px;
+  font-size: 16px;
   background-color: var(--win-bg);
   border-top: 2px solid var(--win-border-light);
   border-left: 2px solid var(--win-border-light);
@@ -205,8 +205,8 @@ body {
   border-left: 2px solid var(--win-border-light);
   border-right: 2px solid var(--win-border-darkest);
   border-bottom: 2px solid var(--win-border-darkest);
-  font-size: 15px;
-  max-width: 140px;
+  font-size: 16px;
+  max-width: 150px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -232,7 +232,7 @@ body {
   border-right: 2px solid var(--win-border-light);
   border-bottom: 2px solid var(--win-border-light);
   padding: 2px 10px;
-  font-size: 15px;
+  font-size: 16px;
   background-color: var(--win-bg);
 }
 
@@ -240,7 +240,7 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
   color: #aa0000;
   font-weight: bold;
@@ -310,7 +310,7 @@ body {
   justify-content: space-between;
   cursor: move;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .active-window .title-bar {
@@ -343,7 +343,7 @@ body {
   border-left: 1.5px solid var(--win-border-light);
   border-right: 1.5px solid var(--win-border-darkest);
   border-bottom: 1.5px solid var(--win-border-darkest);
-  font-size: 14px;
+  font-size: 15px;
   font-family: var(--sys-font);
   display: inline-flex;
   align-items: center;
@@ -358,7 +358,7 @@ body {
 .title-bar-controls .win-btn {
   width: 16px;
   height: 14px;
-  font-size: 9px;
+  font-size: 10px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   padding: 0;
@@ -385,8 +385,8 @@ body {
   border-right: 2px solid var(--win-border-light);
   border-bottom: 2px solid var(--win-border-light);
   overflow: auto;
-  padding: 12px;
-  font-size: 14px;
+  padding: 14px;
+  font-size: 15px;
   position: relative;
 }
 
@@ -397,8 +397,8 @@ body {
 /* File Explorer Client */
 .file-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 22px;
 }
 
 .file-item {
@@ -407,12 +407,12 @@ body {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .file-item svg {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 4px;
 }
 
@@ -432,7 +432,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: var(--term-font);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.5;
   white-space: pre-wrap;
   color: #000000;
@@ -449,7 +449,7 @@ body {
   height: 100%;
   width: 100%;
   padding: 5px;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .terminal-history {
@@ -477,7 +477,7 @@ body {
   outline: none;
   color: var(--term-green);
   font-family: var(--term-font);
-  font-size: 16px;
+  font-size: 17px;
   flex-grow: 1;
   caret-color: var(--term-green);
 }
@@ -496,7 +496,7 @@ body {
 }
 
 .slider-group label {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -510,7 +510,7 @@ body {
   padding: 5px;
   border: 1px solid var(--win-border-dark);
   font-family: var(--term-font);
-  font-size: 13px;
+  font-size: 14px;
   background-color: #e6e6e6;
   text-align: center;
 }
@@ -606,7 +606,7 @@ body {
 }
 
 .screamer-text {
-  font-size: 32px;
+  font-size: 33px;
   margin-top: 30px;
   text-align: center;
 }
@@ -624,7 +624,7 @@ body {
   padding: 5% 10%;
   z-index: 100010;
   display: none;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.6;
 }
 
@@ -638,7 +638,7 @@ body {
   padding: 2px 10px;
   display: inline-block;
   margin-bottom: 30px;
-  font-size: 20px;
+  font-size: 21px;
 }
 
 .bsod p {
@@ -828,7 +828,7 @@ body.safe-mode .micro-shake {
   background: #ffffff;
   padding: 10px;
   font-family: var(--sys-font);
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 8px;
   line-height: 1.4;
 }
@@ -867,7 +867,7 @@ body.safe-mode .micro-shake {
   border-right: 1.5px solid var(--win-border-darkest);
   border-bottom: 1.5px solid var(--win-border-darkest);
   font-family: var(--sys-font);
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
   outline: none;
 }
@@ -965,7 +965,7 @@ body.safe-mode .vertigo-mode {
   white-space: pre-wrap;
   color: #59522c;
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 15px;
   padding-right: 5px;
 }
 
@@ -987,7 +987,7 @@ body.safe-mode .vertigo-mode {
 .backrooms-prompt {
   margin-right: 10px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .backrooms-input {
@@ -996,7 +996,7 @@ body.safe-mode .vertigo-mode {
   outline: none;
   color: #59522c;
   font-family: var(--term-font);
-  font-size: 16px;
+  font-size: 17px;
   flex-grow: 1;
   caret-color: #59522c;
 }
@@ -1028,7 +1028,7 @@ body.safe-mode .backrooms-screen {
   border-bottom: 2px solid var(--win-border-darkest);
   padding: 12px;
   font-family: var(--sys-font);
-  font-size: 15px;
+  font-size: 16px;
   z-index: 10;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   color: #000000;
@@ -1040,7 +1040,7 @@ body.safe-mode .backrooms-screen {
   border-bottom: 1px solid #808080;
   padding-bottom: 6px;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 17px;
   display: flex;
   align-items: center;
   gap: 6px;
