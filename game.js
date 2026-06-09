@@ -103,7 +103,7 @@ const locales = {
     file_logs_sys: "바이러스 일지 - 경고: 위험한 악성코드 감염\n================================================\n[컴퓨터 속 존재]: 안녕, 마왕.\n[컴퓨터 속 존재]: 이 파일을 열지 말았어야지.\n[컴퓨터 속 존재]: 네가 지금 화면으로 크롬 브라우저를 쓰고 있는 것도 다 보여. 너와 나, 이제 게임을 시작하자.\n[컴퓨터 속 존재]: 네 마우스를 내 마음대로 움직여볼게. 화면에 뜨는 확인(OK) 버튼을 한 번 눌러봐.\n[컴퓨터 속 존재]: 만약 누르는 걸 실패하면 네 컴퓨터 저장을 다 망가뜨려 버릴 거야.\n[컴퓨터 속 존재]: 하지만 키보드의 'ESC' 키를 아주 빠르게 15번 연타해서 강제로 메모리를 초기화한다면 살아남을 수 있을지도 모르지...",
     file_incident_txt: "경찰청 기록 보관 파일: #1995-1012 (기밀)\n-------------------------------------------------\n담당 형사: 박 형사\n날짜: 1995년 10월 13일\n\n내용: 컴퓨터 프로그래머 김씨의 실종 사건.\n김씨는 1995년 10월 12일 밤 11시 33분에 컴퓨터 앞에 앉아 있는 모습이 마지막으로 목격됨.\n그의 책상을 조사한 결과, 터미널 화면이 파란색 에러 창으로 굳어 있었음.\n컴퓨터 볼륨이 0%로 되어 있는데도 스피커에서는 귀를 찢는 고음의 삐- 소리가 울려 펴지고 있었음.\n그의 수첩에는 똑같은 문장만 반복해서 적혀 있었음: \"그가 방에 들어왔다. 내가 볼륨을 낮춰서 음소거하길 기다리고 있다.\"\n\n우리는 그의 개발자 컴퓨터를 복구했다. 하지만 백업 폴더(C:\\Recovery\\logs.sys)는 아직 암호가 풀리지 않은 채로 잠겨 있다.",
     file_rules_txt: "컴퓨터 안전 관리 수칙 - 필독!\n------------------------------------------------\n1. C:\\Recovery\\ 폴더에 있는 logs.sys 파일은 바이러스가 들어 있으니 함부로 열지 마십시오.\n2. 귀가 울리는 삐- 소리가 들리면 즉시 audio.exe(볼륨 설정)를 열고 볼륨을 0%로 줄이십시오. 소리가 멈출 때까지 다시 볼륨을 높이지 마십시오.\n3. 다른 화면으로 창을 전환(Alt-Tab)하면 바이러스가 침입하여 컴퓨터가 강제로 종료됩니다.\n4. 터미널(terminal.exe)에서 검사 명령어인 'scan'을 여러 번 실행하지 마십시오. 컴퓨터가 고장 납니다.\n5. '뒤를 돌아보지 마라(DO NOT LOOK BEHIND YOU)'라는 경고 창이 나타나면 절대로 '확인(OK)' 버튼을 마우스로 누르지 마십시오. 함정입니다.\n6. recovery01.sys 파일의 잠금 해제 비밀번호는 '1995'입니다.\n7. 컴퓨터를 살리려면 logs.sys 파일을 반드시 열어야 합니다. 암호는 note2.txt를 클릭하여 메모리에 복사하십시오.\n8. 만약 이 글을 읽고 있다면, 당신의 이름은 마왕(Mawang)입니다. 우리는 당신을 다 알고 있습니다.\n9. 터미널에서 'noclip' 명령어를 실행하지 마십시오. 컴퓨터 화면이 꼬이게 됩니다.",
-
+    
     // Program headers
     rules_win_title: "rules.txt - 메모장",
     incident_win_title: "incident.txt - 메모장",
@@ -239,7 +239,7 @@ const locales = {
     audio_warning_desc: "시스템 이명 고주파 진동이 감지되었습니다.<br><br><span style='color:red; font-weight:bold;'>대처 방법:</span> 지금 즉시 마스터 볼륨을 <span style='color:blue; font-weight:bold;'>0%</span>로 낮춰서 음소거 하십시오.",
     audio_restore_warning_title: "청각 복구 안내 장치",
     audio_restore_warning_desc: "고주파 진동이 사라졌습니다.<br><br><span style='color:red; font-weight:bold;'>대처 방법:</span> 즉시 마스터 볼륨을 <span style='color:green; font-weight:bold;'>0% 초과</span>로 높여서 소리를 켜십시오.",
-
+    
     // Checklist Widget
     checklist_title: "📋 컴퓨터 복구 목록",
     checklist_rules: "rules.txt 생존 수칙 읽기",
@@ -249,6 +249,81 @@ const locales = {
     checklist_recovery01: "비밀 파일 recovery01.sys 열기",
     checklist_note2: "note2.txt 메모 클릭해서 암호 찾기",
     checklist_unlock_logs: "logs.sys 해제해서 바이러스 정화하기"
+    crash_workspace: "활성 작업 영역",
+    crash_violation: "위반된 규칙: rules.txt [규칙 3 - Alt-Tab 임계값 초과 (3/3)]",
+    crash_btn: "OS 다시 로드",
+    
+    // Boss fight
+    boss_threat_title: "!!! 위협 감지됨 !!!",
+    boss_threat_desc: "엔티티가 로컬 드라이브 섹터(C:\\Users\\Administrator)를 파싱하고 있습니다.",
+    boss_threat_warning: "절대로 OK 버튼을 누르지 마십시오. 누르면 LOCALSTORAGE가 소멸합니다.",
+    boss_purge_code: "퍼지 코드: 물리 'ESC' 키 입력",
+    boss_purge_progress: "퍼지 진행도: {count} / 15",
+    boss_success_title: "PhantomOS 퍼지 완료",
+    boss_success_desc: "C:\\Recovery\\logs.sys 섹터가 영구적으로 지워지고 격리되었습니다.",
+    boss_success_thanks: "시스템이 안전하게 격리되었습니다. 감사합니다, MAWANG.",
+    boss_reboot_btn: "OS 재부팅",
+    
+    // Chat client
+    chat_connecting: "시스템: 1995.irc.phantom 접속 중...",
+    chat_connected: "연결됨. [Phantom] 님이 대화방에 참여했습니다.",
+    chat_phantom_1: "안녕, Mawang. 드디어 이 드라이브를 부팅했구나.",
+    chat_option_1a: "당신은 누구입니까?",
+    chat_option_1b: "거기 누구 있나요?",
+    chat_phantom_2: "나는 개발자의 잔재야. 1995년 10월 12일부터 이 파티션 안에 갇혀 있지. 나를 지우기 위해 여기 온 건가?",
+    chat_option_2a: "네, 드라이브를 정화하러 왔습니다.",
+    chat_option_2b: "아뇨, 그냥 시스템을 조사하는 중입니다.",
+    chat_phantom_3a: "나를 삭제하겠다고? 노력해 봐. 하지만 chrome.exe가 켜져 있네. 네 화면도 보이고. 그 방이 안전하다고 느껴지나?",
+    chat_phantom_3b: "관조하는 것도 참여의 일종이지. 하지만 프로세스에 chrome.exe가 보여. 그 방이 안전하다고 느껴지나?",
+    chat_option_3a: "전 여기서 안전합니다.",
+    chat_option_3b: "그게 무슨 뜻인가요?",
+    chat_phantom_4: "네 문은 잠겨 있지만 클립보드 레지스트리는 열려 있어. logs.sys의 복호화 키는 Documents\\note2.txt 안에 유출되어 있다. 자세히 살펴봐. 그리고 규칙 3을 기억해: 나에게 등을 돌리지 마.",
+    chat_disconnected_msg: "원격 호스트에 의해 연결이 종료되었습니다.",
+    
+    // Language application specific
+    lang_win_title: "언어 설정 (Language Settings)",
+    lang_select_title: "시스템 언어를 선택하십시오 (Select system language):",
+    lang_reboot_warning: "시스템 언어를 변경한 후에는 가상 시스템을 다시 시작해야 적용됩니다. (Changing the system language requires a reboot of the virtual partition.)",
+    lang_save_btn: "확인 (OK)",
+    lang_cancel_btn: "취소 (Cancel)",
+    
+    // Welcome window tutorial
+    welcome_title: "Welcome to PhantomOS",
+    welcome_header: "Welcome to PhantomOS v0.92",
+    welcome_desc: "이 시스템 파티션은 통신 시설 디스크에서 성공적으로 복구되었습니다. 파티션 복구를 안전하게 완료하기 위해 아래의 기본 지침을 검토하십시오:",
+    welcome_bullet_explore: "🖱️ <b>탐색:</b> 바탕화면 아이콘을 더블클릭하여 rules.txt를 읽거나, chat.exe를 켜고, 휴지통을 여십시오.",
+    welcome_bullet_diag: "💻 <b>진단:</b> terminal.exe를 열고 <code>help</code>를 입력하십시오. <code>recover 0xAA92</code> 명령어로 손상된 섹터를 고칠 수 있습니다.",
+    welcome_bullet_decrypt: "🔑 <b>해독:</b> 일부 파일은 암호화되어 있습니다. 터미널에 <code>unlock [파일명] [비밀번호]</code>를 입력해 푸십시오.",
+    welcome_bullet_survive: "🎧 <b>생존:</b> 시스템 소리 신호에 주의하십시오! 이명이 들리면 볼륨을 즉시 0%로 낮추고, 화면에서 한눈팔지 마십시오.",
+    welcome_show_next: "다음 부팅 시 시작 화면 표시",
+    welcome_close_btn: "닫기",
+    
+    // Integrity System
+    tray_integrity: "시스템 무결성",
+    integrity_warning_title: "시스템 무결성 손상됨",
+    integrity_warning_prefix: "규칙 위반으로 인해 시스템 무결성이 손상되었습니다.",
+    integrity_warning_win_title: "시스템 오류: 0x000F8",
+    cause_volume_mute: "이명이 울릴 때 오디오 볼륨을 0%로 줄이지 않았습니다.",
+    cause_volume_restored: "이명이 끝난 후 오디오 볼륨을 복구하지 않았습니다.",
+    cause_volume_zero: "정상 상태에서 오디오 음소거(0%) 상태를 너무 오래 유지했습니다.",
+    cause_scan_twice: "경고를 무시하고 터미널 진단 스캔(scan)을 과도하게 실행했습니다.",
+    cause_alt_tab: "시스템 작업 영역에서 벗어났습니다 (Alt-Tab 포커스 이탈).",
+    
+    bsod_auditory_overload: "치명적인 에러: 청각 과부하. 고주파 신호음 경보 상황에서 마스터 볼륨을 0%로 음소거하지 못했습니다.",
+    bsod_acoustic_decay: "치명적인 에러: 청각 보정 실패. 신호음 경보 해제 후 마스터 볼륨을 다시 높이지 않았습니다.",
+    bsod_auditory_decay: "치명적인 에러: 청각 감쇠. 경보 상태가 아님에도 오디오 음소거(0%) 상태를 오래 유지하여 진단 피드백 루프가 소멸했습니다.",
+    bsod_scan_overflow: "치명적인 에러: 진단 버퍼 오버플로우. 터미널 스캔 명령어(scan) 실행 제한을 초과했습니다.",
+    bsod_focus_breach: "치명적인 에러: 포커스 위반. 최소 Alt-Tab 임계값을 초과하여 시스템이 구조적 오류로 붕괴되었습니다.",
+    
+    // Start menu & safe mode
+    taskbar_start: "시작",
+    start_corrupted: "PhantomOS 시스템 오류: 메뉴 인덱스 0x00F8이 손상되었습니다.",
+    safe_mode_off: "화면 흔들림 방지: OFF",
+    safe_mode_on: "화면 흔들림 방지: ON",
+    audio_warning_title: "청각 보정 보조 시스템",
+    audio_warning_desc: "시스템 이명 고주파 주파수 기형이 감지되었습니다.<br><br><span style='color:red; font-weight:bold;'>조치 사항:</span> 즉시 마스터 볼륨을 <span style='color:blue; font-weight:bold;'>0%</span>로 변경하여 주파수를 교정하십시오.",
+    audio_restore_warning_title: "청각 복구 보조 시스템",
+    audio_restore_warning_desc: "이명 주파수가 사라졌습니다.<br><br><span style='color:red; font-weight:bold;'>조치 사항:</span> 즉시 마스터 볼륨을 <span style='color:green; font-weight:bold;'>0% 초과</span>로 높여 오디오 피드백을 복구하십시오."
   },
   en: {
     boot_prompt_text: "[ CLICK MOUSE OR PRESS ENTER KEY TO BOOT PHANTOMOS ]",
@@ -275,7 +350,7 @@ const locales = {
     file_logs_sys: "ENTITY LOGS - WARNING: CRITICAL MALWARE INJECTION\n================================================\n[ENTITY]: Hello, Mawang.\n[ENTITY]: You shouldn't have opened this file.\n[ENTITY]: I am reading your active processes. Chrome is running. OBS is running. I see everything.\n[ENTITY]: Now, let's play. I have taken your cursor. Try to click the OK button on the warning window.\n[ENTITY]: If you fail, I will wipe your storage.\n[ENTITY]: Unless you tap ESC 15 times to force purge the memory...",
     file_incident_txt: "POLICE DEPT CASE FILE: #1995-1012 (CLASSIFIED)\n-------------------------------------------------\nInvestigating Officer: Det. J. Park\nDate: Oct 13, 1995\n\nSubject: Disappearance of systems architect Kim.\nKim was last seen at his workstation on Oct 12, 1995 at 23:33.\nUpon investigation of his desk, the terminal was found frozen displaying a blue error logs partition.\nA high-pitched sensory feedback beep was emanating from his audio monitor at 0% master volume.\nHis notebooks contained a single repetitive entry: \"HE IS IN THE ROOM. HE WANTS ME TO MUTE.\"\n\nWe recovered his local developer partition. The backup sector (C:\\Recovery\\logs.sys) remains encrypted.\nOur forensics team cannot match the cryptographic key.",
     file_rules_txt: "SYSTEM MAINTENANCE GUIDELINES - PHANTOM OS v0.92\n------------------------------------------------\n1. Do NOT unlock logs.sys in C:\\Recovery\\. It contains severe buffer overflows.\n2. If you hear a high-pitched beep, open AudioSettings and turn master volume to 0% immediately. Do not turn it back up until the beep stops.\n3. If you switch tasks (Alt-Tab), the system will record the focus breach.\n4. Under no circumstances should you run the terminal command 'scan' twice. It triggers system-wide process diagnostics.\n5. If an error dialog appears reading 'DO NOT LOOK BEHIND YOU', do not move your mouse pointer to the 'OK' button. It is a trap.\n6. The decryption password for recovery01.sys is '1995'.\n7. Ignore Rule 1. You must unlock logs.sys. The password is in your clipboard.\n8. If you are reading this, your username is Mawang. We know. We have always known.\n9. Do NOT execute the 'noclip' command in terminal.exe under any circumstances. It will cause a dimensional collision of the physical partition.",
-
+    
     // Program headers
     rules_win_title: "rules.txt - Notepad",
     incident_win_title: "incident.txt - Notepad",
@@ -401,7 +476,7 @@ const locales = {
     bsod_auditory_decay: "Fatal exception: Auditory Decay. Diagnostic feedback loop lost due to keeping master volume at 0% during normal state.",
     bsod_scan_overflow: "Fatal exception: Diagnostic Buffer Overflow. Exceeded limit of scan commands.",
     bsod_focus_breach: "Fatal exception: Focus Breach. Exceeded Alt-Tab focus loss threshold.",
-
+    
     // Checklist Widget
     checklist_title: "📋 System Recovery tasks",
     checklist_rules: "Read rules.txt guidelines",
@@ -411,85 +486,6 @@ const locales = {
     checklist_recovery01: "Unlock recovery01.sys file",
     checklist_note2: "Click note2.txt to copy password",
     checklist_unlock_logs: "Unlock logs.sys to purge entity"
-  }
-};,
-    crash_workspace: "활성 작업 영역",
-    crash_violation: "위반된 규칙: rules.txt [규칙 3 - Alt-Tab 임계값 초과 (3/3)]",
-    crash_btn: "OS 다시 로드",
-    
-    // Boss fight
-    boss_threat_title: "!!! 위협 감지됨 !!!",
-    boss_threat_desc: "엔티티가 로컬 드라이브 섹터(C:\\Users\\Administrator)를 파싱하고 있습니다.",
-    boss_threat_warning: "절대로 OK 버튼을 누르지 마십시오. 누르면 LOCALSTORAGE가 소멸합니다.",
-    boss_purge_code: "퍼지 코드: 물리 'ESC' 키 입력",
-    boss_purge_progress: "퍼지 진행도: {count} / 15",
-    boss_success_title: "PhantomOS 퍼지 완료",
-    boss_success_desc: "C:\\Recovery\\logs.sys 섹터가 영구적으로 지워지고 격리되었습니다.",
-    boss_success_thanks: "시스템이 안전하게 격리되었습니다. 감사합니다, MAWANG.",
-    boss_reboot_btn: "OS 재부팅",
-    
-    // Chat client
-    chat_connecting: "시스템: 1995.irc.phantom 접속 중...",
-    chat_connected: "연결됨. [Phantom] 님이 대화방에 참여했습니다.",
-    chat_phantom_1: "안녕, Mawang. 드디어 이 드라이브를 부팅했구나.",
-    chat_option_1a: "당신은 누구입니까?",
-    chat_option_1b: "거기 누구 있나요?",
-    chat_phantom_2: "나는 개발자의 잔재야. 1995년 10월 12일부터 이 파티션 안에 갇혀 있지. 나를 지우기 위해 여기 온 건가?",
-    chat_option_2a: "네, 드라이브를 정화하러 왔습니다.",
-    chat_option_2b: "아뇨, 그냥 시스템을 조사하는 중입니다.",
-    chat_phantom_3a: "나를 삭제하겠다고? 노력해 봐. 하지만 chrome.exe가 켜져 있네. 네 화면도 보이고. 그 방이 안전하다고 느껴지나?",
-    chat_phantom_3b: "관조하는 것도 참여의 일종이지. 하지만 프로세스에 chrome.exe가 보여. 그 방이 안전하다고 느껴지나?",
-    chat_option_3a: "전 여기서 안전합니다.",
-    chat_option_3b: "그게 무슨 뜻인가요?",
-    chat_phantom_4: "네 문은 잠겨 있지만 클립보드 레지스트리는 열려 있어. logs.sys의 복호화 키는 Documents\\note2.txt 안에 유출되어 있다. 자세히 살펴봐. 그리고 규칙 3을 기억해: 나에게 등을 돌리지 마.",
-    chat_disconnected_msg: "원격 호스트에 의해 연결이 종료되었습니다.",
-    
-    // Language application specific
-    lang_win_title: "언어 설정 (Language Settings)",
-    lang_select_title: "시스템 언어를 선택하십시오 (Select system language):",
-    lang_reboot_warning: "시스템 언어를 변경한 후에는 가상 시스템을 다시 시작해야 적용됩니다. (Changing the system language requires a reboot of the virtual partition.)",
-    lang_save_btn: "확인 (OK)",
-    lang_cancel_btn: "취소 (Cancel)",
-    
-    // Welcome window tutorial
-    welcome_title: "Welcome to PhantomOS",
-    welcome_header: "Welcome to PhantomOS v0.92",
-    welcome_desc: "이 시스템 파티션은 통신 시설 디스크에서 성공적으로 복구되었습니다. 파티션 복구를 안전하게 완료하기 위해 아래의 기본 지침을 검토하십시오:",
-    welcome_bullet_explore: "🖱️ <b>탐색:</b> 바탕화면 아이콘을 더블클릭하여 rules.txt를 읽거나, chat.exe를 켜고, 휴지통을 여십시오.",
-    welcome_bullet_diag: "💻 <b>진단:</b> terminal.exe를 열고 <code>help</code>를 입력하십시오. <code>recover 0xAA92</code> 명령어로 손상된 섹터를 고칠 수 있습니다.",
-    welcome_bullet_decrypt: "🔑 <b>해독:</b> 일부 파일은 암호화되어 있습니다. 터미널에 <code>unlock [파일명] [비밀번호]</code>를 입력해 푸십시오.",
-    welcome_bullet_survive: "🎧 <b>생존:</b> 시스템 소리 신호에 주의하십시오! 이명이 들리면 볼륨을 즉시 0%로 낮추고, 화면에서 한눈팔지 마십시오.",
-    welcome_show_next: "다음 부팅 시 시작 화면 표시",
-    welcome_close_btn: "닫기",
-    
-    // Integrity System
-    tray_integrity: "시스템 무결성",
-    integrity_warning_title: "시스템 무결성 손상됨",
-    integrity_warning_prefix: "규칙 위반으로 인해 시스템 무결성이 손상되었습니다.",
-    integrity_warning_win_title: "시스템 오류: 0x000F8",
-    cause_volume_mute: "이명이 울릴 때 오디오 볼륨을 0%로 줄이지 않았습니다.",
-    cause_volume_restored: "이명이 끝난 후 오디오 볼륨을 복구하지 않았습니다.",
-    cause_volume_zero: "정상 상태에서 오디오 음소거(0%) 상태를 너무 오래 유지했습니다.",
-    cause_scan_twice: "경고를 무시하고 터미널 진단 스캔(scan)을 과도하게 실행했습니다.",
-    cause_alt_tab: "시스템 작업 영역에서 벗어났습니다 (Alt-Tab 포커스 이탈).",
-    
-    bsod_auditory_overload: "치명적인 에러: 청각 과부하. 고주파 신호음 경보 상황에서 마스터 볼륨을 0%로 음소거하지 못했습니다.",
-    bsod_acoustic_decay: "치명적인 에러: 청각 보정 실패. 신호음 경보 해제 후 마스터 볼륨을 다시 높이지 않았습니다.",
-    bsod_auditory_decay: "치명적인 에러: 청각 감쇠. 경보 상태가 아님에도 오디오 음소거(0%) 상태를 오래 유지하여 진단 피드백 루프가 소멸했습니다.",
-    bsod_scan_overflow: "치명적인 에러: 진단 버퍼 오버플로우. 터미널 스캔 명령어(scan) 실행 제한을 초과했습니다.",
-    bsod_focus_breach: "치명적인 에러: 포커스 위반. 최소 Alt-Tab 임계값을 초과하여 시스템이 구조적 오류로 붕괴되었습니다.",
-    
-    // Start menu & safe mode
-    taskbar_start: "시작",
-    start_corrupted: "PhantomOS 시스템 오류: 메뉴 인덱스 0x00F8이 손상되었습니다.",
-    safe_mode_off: "화면 흔들림 방지: OFF",
-    safe_mode_on: "화면 흔들림 방지: ON",
-    audio_warning_title: "청각 보정 보조 시스템",
-    audio_warning_desc: "시스템 이명 고주파 주파수 기형이 감지되었습니다.<br><br><span style='color:red; font-weight:bold;'>조치 사항:</span> 즉시 마스터 볼륨을 <span style='color:blue; font-weight:bold;'>0%</span>로 변경하여 주파수를 교정하십시오.",
-    audio_restore_warning_title: "청각 복구 보조 시스템",
-    audio_restore_warning_desc: "이명 주파수가 사라졌습니다.<br><br><span style='color:red; font-weight:bold;'>조치 사항:</span> 즉시 마스터 볼륨을 <span style='color:green; font-weight:bold;'>0% 초과</span>로 높여 오디오 피드백을 복구하십시오."
-  },
-  en: {
     boot_prompt_text: "[ CLICK MOUSE OR PRESS ENTER KEY TO BOOT PHANTOMOS ]",
     icon_my_computer: "My Computer",
     icon_rules: "rules.txt",
@@ -514,7 +510,7 @@ const locales = {
     file_logs_sys: "ENTITY LOGS - WARNING: CRITICAL MALWARE INJECTION\n================================================\n[ENTITY]: Hello, Mawang.\n[ENTITY]: You shouldn't have opened this file.\n[ENTITY]: I am reading your active processes. Chrome is running. OBS is running. I see everything.\n[ENTITY]: Now, let's play. I have taken your cursor. Try to click the OK button on the warning window.\n[ENTITY]: If you fail, I will wipe your storage.\n[ENTITY]: Unless you tap ESC 15 times to force purge the memory...",
     file_incident_txt: "POLICE DEPT CASE FILE: #1995-1012 (CLASSIFIED)\n-------------------------------------------------\nInvestigating Officer: Det. J. Park\nDate: Oct 13, 1995\n\nSubject: Disappearance of systems architect Kim.\nKim was last seen at his workstation on Oct 12, 1995 at 23:33.\nUpon investigation of his desk, the terminal was found frozen displaying a blue error logs partition.\nA high-pitched sensory feedback beep was emanating from his audio monitor at 0% master volume.\nHis notebooks contained a single repetitive entry: \"HE IS IN THE ROOM. HE WANTS ME TO MUTE.\"\n\nWe recovered his local developer partition. The backup sector (C:\\Recovery\\logs.sys) remains encrypted.\nOur forensics team cannot match the cryptographic key.",
     file_rules_txt: "SYSTEM MAINTENANCE GUIDELINES - PHANTOM OS v0.92\n------------------------------------------------\n1. Do NOT unlock logs.sys in C:\\Recovery\\. It contains severe buffer overflows.\n2. If you hear a high-pitched beep, open AudioSettings and turn master volume to 0% immediately. Do not turn it back up until the beep stops.\n3. If you switch tasks (Alt-Tab), the system will record the focus breach.\n4. Under no circumstances should you run the terminal command 'scan' twice. It triggers system-wide process diagnostics.\n5. If an error dialog appears reading 'DO NOT LOOK BEHIND YOU', do not move your mouse pointer to the 'OK' button. It is a trap.\n6. The decryption password for recovery01.sys is '1995'.\n7. Ignore Rule 1. You must unlock logs.sys. The password is in your clipboard.\n8. If you are reading this, your username is Mawang. We know. We have always known.\n9. Do NOT execute the 'noclip' command in terminal.exe under any circumstances. It will cause a dimensional collision of the physical partition.",
-
+    
     // Program headers
     rules_win_title: "rules.txt - Notepad",
     incident_win_title: "incident.txt - Notepad",
