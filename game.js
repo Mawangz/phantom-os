@@ -248,7 +248,7 @@ const locales = {
     checklist_incident: "휴지통의 incident.txt 읽기",
     checklist_recovery01: "비밀 파일 recovery01.sys 열기",
     checklist_note2: "note2.txt 메모 클릭해서 암호 찾기",
-    checklist_unlock_logs: "logs.sys 해제해서 바이러스 정화하기"
+    checklist_unlock_logs: "logs.sys 해제해서 바이러스 정화하기",
     crash_workspace: "활성 작업 영역",
     crash_violation: "위반된 규칙: rules.txt [규칙 3 - Alt-Tab 임계값 초과 (3/3)]",
     crash_btn: "OS 다시 로드",
@@ -485,7 +485,7 @@ const locales = {
     checklist_incident: "Read incident.txt clue",
     checklist_recovery01: "Unlock recovery01.sys file",
     checklist_note2: "Click note2.txt to copy password",
-    checklist_unlock_logs: "Unlock logs.sys to purge entity"
+    checklist_unlock_logs: "Unlock logs.sys to purge entity",
     boot_prompt_text: "[ CLICK MOUSE OR PRESS ENTER KEY TO BOOT PHANTOMOS ]",
     icon_my_computer: "My Computer",
     icon_rules: "rules.txt",
