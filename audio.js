@@ -117,7 +117,7 @@ function startAmbientDrone() {
     wetGain.gain.setValueAtTime(0.25, audioCtx.currentTime);
     droneGain.connect(wetGain);
     wetGain.connect(convolverNode);
-    convolverNode.connect(audioCtx.destination);
+    convolverNode.connect(masterGain);
 
     const compressor = audioCtx.createDynamicsCompressor();
     droneGain.connect(compressor);
@@ -909,21 +909,26 @@ function playHeartbeatTone(active) {
 }
 
 function triggerHeartbeatTap(time) {
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(80, time);
-  osc.frequency.exponentialRampToValueAtTime(30, time + 0.16);
-  
-  gain.gain.setValueAtTime(0.55, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
-  
-  osc.connect(gain);
-  gain.connect(masterGain);
-  
-  osc.start(time);
-  osc.stop(time + 0.2);
+  if (!audioCtx || !masterGain) return;
+  try {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(80, time);
+    osc.frequency.exponentialRampToValueAtTime(30, time + 0.16);
+    
+    gain.gain.setValueAtTime(0.55, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
+    
+    osc.connect(gain);
+    gain.connect(masterGain);
+    
+    osc.start(time);
+    osc.stop(time + 0.2);
+  } catch (e) {
+    console.warn("Heartbeat synthesis error:", e);
+  }
 }
 
 let y2kSirenOsc = null;

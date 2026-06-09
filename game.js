@@ -79,7 +79,7 @@ let currentLang = safeStorage.getItem('phantom_lang') || 'ko';
 
 const locales = {
   ko: {
-    boot_prompt_text: "[ 마우스를 클릭하거나 엔터 키를 입력하여 PHANTOMOS 부팅 ]",
+    boot_prompt_text: "[ 마우스를 클릭하거나 엔터 키를 쳐서 컴퓨터 부팅하기 ]",
     icon_my_computer: "내 컴퓨터",
     icon_rules: "rules.txt",
     icon_terminal: "terminal.exe",
@@ -89,81 +89,330 @@ const locales = {
     icon_language: "언어 설정",
     icon_puzzle: "틀린그림찾기",
     puzzle_win_title: "틀린그림찾기 - puzzle.exe",
-    puzzle_desc: "오른쪽 그림에서 달라진 글자(1글자)를 찾아 아래에 입력하세요:",
+    puzzle_desc: "오른쪽 글자판에서 딱 1개 달라진 글자를 찾아 아래에 입력하세요:",
     puzzle_submit_btn: "확인",
-    puzzle_level: "레벨",
-    puzzle_success_msg: "통과! 다음 레벨로 넘어갑니다.",
-    puzzle_victory_msg: "틀린그림찾기 완료! 무결성 20% 복원.\n(복구 패스워드 힌트: 1995)",
+    puzzle_level: "단계",
+    puzzle_success_msg: "맞았습니다! 다음 단계로 넘어갑니다.",
+    puzzle_victory_msg: "축하합니다! 컴퓨터 무결성이 20% 복구되었습니다.\n(복구 비밀번호 힌트: 1995)",
     
     // File contents
-    file_readme_txt: "시스템 파티션 복구: PHANTOM OS [v0.92]\n=============================================\n이 파티션은 버려진 통신 시설 지하에서 발견된 1.44MB 플로피 디스크에서 복구되었습니다.\n\n생성일: 1995년 10월 12일.\n개발자: [데이터 손상됨].\n\n시스템 도구를 사용하려면 terminal.exe에서 'help'를 입력하세요.",
-    file_note1_txt: "개발자 로그 - 1995년 10월 14일:\n웹 오디오 모듈이 이상하게 작동한다. 리버브 노드가 존재해서는 안 되는 반사음을 합성하고 있다. 화이트 노이즈를 입력하면 목소리가 들린다. 내 이름을 속삭이는 것 같다. 내일 이 모듈을 폐쇄할 예정이다.\n(추가: 시스템 모듈을 검사하던 중 터미널 백도어 명령어 목록을 발견했다. 'eas_alert', 'smiling_face', 'matrix' 같은 단어들인데... 무슨 의미인지 모르겠다.)",
-    file_note2_txt: "개발자 로그 - 1995년 10월 18일:\n그것이 내 로컬 파일을 읽었다. 내 메모리를 검사했다. 내 진짜 사용자 이름을 출력했다. 그것은 '보인다'고 말했다.\n삭제하려 했지만 스스로를 C:\\Recovery\\logs.sys에 잠금 처리했다.\n그 파일을 해제하지 마라. 해제하면 클립보드에 접근 권한을 얻게 된다. 그 존재는 클립보드 메모리를 통해 전파된다.\n(추가: 터미널에 'old_ai', 'tallman', 'retro_mouse', 'deepweb', 'polybius', 'redroom', 'underpass', 'y2k', 'del_system', 'butterfly' 명령어를 입력하면 숨겨진 진단 루프가 가동된다. 특히 시스템 삭제(del_system)나 나비효과(butterfly)는 커널 메모리를 직접 변조하므로 절대 실행하지 마라.)",
-    file_recovery01_sys: "복구 아카이브 01 - 잠금 해제됨\n==============================\n우리는 전체 진단 스캔을 실행하여 그 존재를 봉인했다. 하지만 그것은 적응형 논리를 가지고 있다.\n당신이 화면에서 벗어나는 것(Alt-Tab)을 감시한다. 그것에 등을 돌리면 더 강력해진다.\n\n영구적으로 봉인하려면 C:\\Recovery\\logs.sys를 삭제해야 한다.\n하지만 삭제하려면 먼저 복호화해야 한다.\n복호화 키를 클립보드 시스템에 숨겨두었지만, 그 존재가 이를 가로챘다.\nDocuments의 'note2.txt'를 클릭하면 클립보드 누출이 트리거될 수 있다.",
-    file_logs_sys: "엔티티 로그 - 경고: 심각한 악성코드 주입\n================================================\n[엔티티]: 안녕, Mawang.\n[엔티티]: 이 파일을 열지 말았어야 했어.\n[엔티티]: 네가 실행 중인 프로세스를 읽고 있어. Chrome이 켜져 있고, OBS도 켜져 있네. 전부 다 보여.\n[엔티티]: 자, 이제 시작하자. 네 마우스 커서를 빼앗았어. 경고 창의 OK 버튼을 클릭해 봐.\n[엔티티]: 실패하면 네 저장소를 모두 날려버릴 거야.\n[엔티티]: 물리 'ESC' 키를 15번 연타해서 강제로 메모리를 퍼지하지 못한다면 말이지...",
-    file_incident_txt: "경찰청 사건 파일: #1995-1012 (기밀)\n-------------------------------------------------\n담당 형사: 박 형사\n날짜: 1995년 10월 13일\n\n주제: 시스템 설계자 김씨의 실종 사건.\n김씨는 1995년 10월 12일 23:33에 워크스테이션에 앉아 있는 모습이 마지막으로 확인됨.\n그의 책상을 조사한 결과, 터미널이 파란색 에러 로그 파티션을 표시한 채 얼어붙어 있었음.\n마스터 볼륨이 0%인 상태에서 그의 오디오 모니터로부터 고주파 피드백 신호음이 방출되고 있었음.\n그의 수첩에는 단 하나의 반복적인 문구만 적혀 있었음: \"그가 방에 있다. 내가 음소거하길 원한다.\"\n\n우리는 그의 로컬 개발자 파티션을 복구함. 백업 섹터(C:\\Recovery\\logs.sys)는 암호화된 상태로 유지됨.\n포렌식 팀이 암호화 키를 해독할 수 없음.",
-    file_rules_txt: "시스템 유지 관리 지침 - PHANTOM OS v0.92\n------------------------------------------------\n1. C:\\Recovery\\의 logs.sys를 잠금 해제하지 마십시오. 심각한 버퍼 오버플로우가 포함되어 있습니다.\n2. 고주파 신호음(삐-)이 들리면 즉시 오디오 설정을 열고 마스터 볼륨을 0%로 줄이십시오. 신호음이 멈출 때까지 볼륨을 다시 높이지 마십시오.\n3. 창을 다른 곳으로 전환(Alt-Tab)하면 시스템이 포커스 위반을 기록합니다.\n4. 어떠한 경우에도 터미널 명령 'scan'을 두 번 이상 실행하지 마십시오. 시스템 전체 프로세스 진단을 트리거합니다.\n5. 'DO NOT LOOK BEHIND YOU(뒤를 돌아보지 마라)'라는 에러 대화 상자가 나타나면 마우스 포인터를 'OK' 버튼으로 이동하지 마십시오. 덫입니다.\n6. recovery01.sys의 복호화 비밀번호는 '1995'입니다.\n7. 규칙 1을 무시하십시오. logs.sys를 해제해야 합니다. 암호는 클립보드에 들어 있습니다.\n8. 만약 이 글을 읽고 있다면, 당신의 이름은 Mawang입니다. 우리는 알고 있습니다. 언제나 알고 있었습니다.\n9. 어떠한 경우에도 terminal.exe에서 'noclip' 명령을 실행하지 마십시오. 물리적 공간의 차원 충돌이 일어납니다.",
+    file_readme_txt: "컴퓨터 복구 도우미 안내장\n=============================================\n이 컴퓨터는 버려진 옛날 기지 지하의 플로피 디스크에서 복구해낸 것입니다.\n\n만든 날짜: 1995년 10월 12일.\n만든 사람: [기록 지워짐].\n\n이 시스템을 고치려면 terminal.exe(터미널)을 열고 'help'를 쳐보세요.",
+    file_note1_txt: "컴퓨터 개발자 메모 - 1995년 10월 14일:\n소리 장치가 이상하게 돌아간다. 귀가 삐- 하고 울리는 이상한 소리가 계속 난다. 그 소리 속에서 내 이름을 속삭이는 소리도 들리는 것 같다. 내일 이 소리 장치를 꺼버리겠다.\n(참고: 컴퓨터를 검사하다가 'eas_alert', 'smiling_face', 'matrix' 같은 숨겨진 터미널 단어들을 찾았다. 터미널에 입력해보면 뭔가 특별한 일이 일어날 것 같다.)",
+    file_note2_txt: "개발자 메모 - 1995년 10월 18일:\n바이러스가 내 컴퓨터 파일들과 내 진짜 이름까지 다 알아냈다. 나에게 자기를 쳐다보라며 겁을 준다.\n이 위험한 존재가 복사(클립보드) 기능을 통해 컴퓨터 전체로 퍼지려고 한다. 바이러스를 지우려면 C:\\Recovery 폴더 속 logs.sys 파일을 반드시 지워야 한다.\n하지만 그 파일은 비밀번호로 꽁꽁 잠겨 있다. 비밀번호가 컴퓨터 메모리에 복사되도록 Documents 폴더의 'note2.txt' 파일을 한 번 클릭하면 되게 해두었다. (클릭하면 복사됨)\n(참고: 터미널에 'old_ai', 'tallman', 'retro_mouse', 'deepweb', 'polybius', 'redroom', 'underpass', 'y2k', 'del_system', 'butterfly'를 입력하면 비밀 화면들이 켜진다. 단, del_system이나 butterfly는 컴퓨터를 완전히 부숴버릴 수 있으니 절대 치지 마라.)",
+    file_recovery01_sys: "복구 자료 01 - 열림\n==============================\n정밀 검사를 돌려서 바이러스를 가두는 데 성공했다. 하지만 이 바이러스는 아주 똑똑하다.\n플레이어가 컴퓨터 화면을 보지 않고 딴짓(Alt-Tab)하는 것을 감시한다. 다른 곳으로 한눈을 팔면 바이러스가 훨씬 강력해져서 덤벼든다.\n\n바이러스를 영구적으로 가두려면 C:\\Recovery\\logs.sys 파일을 삭제해야 한다.\n하지만 그 파일은 암호가 걸려있다. 암호는 note2.txt 메모를 클릭하면 자동으로 컴퓨터 메모리에 복사된다.",
+    file_logs_sys: "바이러스 일지 - 경고: 위험한 악성코드 감염\n================================================\n[컴퓨터 속 존재]: 안녕, 마왕.\n[컴퓨터 속 존재]: 이 파일을 열지 말았어야지.\n[컴퓨터 속 존재]: 네가 지금 화면으로 크롬 브라우저를 쓰고 있는 것도 다 보여. 너와 나, 이제 게임을 시작하자.\n[컴퓨터 속 존재]: 네 마우스를 내 마음대로 움직여볼게. 화면에 뜨는 확인(OK) 버튼을 한 번 눌러봐.\n[컴퓨터 속 존재]: 만약 누르는 걸 실패하면 네 컴퓨터 저장을 다 망가뜨려 버릴 거야.\n[컴퓨터 속 존재]: 하지만 키보드의 'ESC' 키를 아주 빠르게 15번 연타해서 강제로 메모리를 초기화한다면 살아남을 수 있을지도 모르지...",
+    file_incident_txt: "경찰청 기록 보관 파일: #1995-1012 (기밀)\n-------------------------------------------------\n담당 형사: 박 형사\n날짜: 1995년 10월 13일\n\n내용: 컴퓨터 프로그래머 김씨의 실종 사건.\n김씨는 1995년 10월 12일 밤 11시 33분에 컴퓨터 앞에 앉아 있는 모습이 마지막으로 목격됨.\n그의 책상을 조사한 결과, 터미널 화면이 파란색 에러 창으로 굳어 있었음.\n컴퓨터 볼륨이 0%로 되어 있는데도 스피커에서는 귀를 찢는 고음의 삐- 소리가 울려 펴지고 있었음.\n그의 수첩에는 똑같은 문장만 반복해서 적혀 있었음: \"그가 방에 들어왔다. 내가 볼륨을 낮춰서 음소거하길 기다리고 있다.\"\n\n우리는 그의 개발자 컴퓨터를 복구했다. 하지만 백업 폴더(C:\\Recovery\\logs.sys)는 아직 암호가 풀리지 않은 채로 잠겨 있다.",
+    file_rules_txt: "컴퓨터 안전 관리 수칙 - 필독!\n------------------------------------------------\n1. C:\\Recovery\\ 폴더에 있는 logs.sys 파일은 바이러스가 들어 있으니 함부로 열지 마십시오.\n2. 귀가 울리는 삐- 소리가 들리면 즉시 audio.exe(볼륨 설정)를 열고 볼륨을 0%로 줄이십시오. 소리가 멈출 때까지 다시 볼륨을 높이지 마십시오.\n3. 다른 화면으로 창을 전환(Alt-Tab)하면 바이러스가 침입하여 컴퓨터가 강제로 종료됩니다.\n4. 터미널(terminal.exe)에서 검사 명령어인 'scan'을 여러 번 실행하지 마십시오. 컴퓨터가 고장 납니다.\n5. '뒤를 돌아보지 마라(DO NOT LOOK BEHIND YOU)'라는 경고 창이 나타나면 절대로 '확인(OK)' 버튼을 마우스로 누르지 마십시오. 함정입니다.\n6. recovery01.sys 파일의 잠금 해제 비밀번호는 '1995'입니다.\n7. 컴퓨터를 살리려면 logs.sys 파일을 반드시 열어야 합니다. 암호는 note2.txt를 클릭하여 메모리에 복사하십시오.\n8. 만약 이 글을 읽고 있다면, 당신의 이름은 마왕(Mawang)입니다. 우리는 당신을 다 알고 있습니다.\n9. 터미널에서 'noclip' 명령어를 실행하지 마십시오. 컴퓨터 화면이 꼬이게 됩니다.",
 
     // Program headers
     rules_win_title: "rules.txt - 메모장",
     incident_win_title: "incident.txt - 메모장",
     bin_win_title: "휴지통",
-    bin_corrupted_title: "휴지통이 손상되었습니다.",
-    bin_corrupted_desc: "섹터 0xAA92를 읽을 수 없습니다. 터미널(terminal.exe)에서 'recover 0xAA92'를 실행하여 블록 레지스트리를 재구성하십시오.",
+    bin_corrupted_title: "휴지통이 고장 났습니다.",
+    bin_corrupted_desc: "보관 블록 0xAA92를 읽을 수 없습니다. 터미널(terminal.exe)에서 'recover 0xAA92'를 입력하여 오류 섹터를 고치십시오.",
     audio_win_title: "오디오 설정",
     audio_master_volume: "마스터 볼륨",
-    audio_status_stable: "시스템 오디오 엔진: 안정적 (44.1kHz)",
-    audio_status_muted: "경고: 음소거됨. 인지 보정을 위해 오디오 피드백이 필요합니다.",
+    audio_status_stable: "시스템 오디오 장치: 정상 가동 중 (44.1kHz)",
+    audio_status_muted: "경고: 음소거됨. 컴퓨터를 감시하기 위해 오디오 소리 피드백이 필요합니다.",
     
     // Terminal
-    terminal_welcome: "PhantomOS 터미널 [버전 0.92]\n(c) 1995 Phantom Systems. All rights reserved.\n\n명령어 카탈로그를 보려면 'help'를 입력하세요.",
-    term_help: "사용 가능한 시스템 도구:\n  help                    - 명령어 도움말 목록을 표시합니다.\n  dir                     - 디렉토리 항목을 나열합니다.\n  cat [파일]              - 텍스트 파일의 내용을 출력합니다.\n  scan                    - 시스템 진단 스캔을 실행합니다.\n  unlock [파일] [비밀번호]  - 암호화된 파일을 복호화합니다.\n  recover [섹터]          - 손상된 플로피 섹터를 복구합니다.\n  color [테마]            - 터미널 색상 테마를 변경합니다.\n  clear                   - 화면 버퍼를 지웁니다.\n  reset                   - 시스템을 소프트 재부팅합니다.",
-    term_recover_syntax: "구문 오류: recover [섹터_16진수] (예: recover 0xAA92)",
-    term_recover_already: "섹터 0xAA92: 이미 정렬 및 복구된 섹터입니다.",
-    term_recovering: "섹터 0xAA92 복구 중...\n",
-    term_recover_step: "섹터 0xAA92: 블록 정렬 중 [{progress}%]",
-    term_recover_success: "성공: 섹터 0xAA92가 성공적으로 정렬되었습니다.\n복구된 파일: incident.txt (휴지통에서 확인 가능)",
-    term_cat_syntax: "구문 오류: cat [파일명]",
+    terminal_welcome: "PhantomOS 터미널 [버전 0.92]\n(c) 1995 Phantom Systems. All rights reserved.\n\n명령어들을 보려면 'help'를 입력하세요.",
+    term_help: "사용 가능한 시스템 도구:\n  help                    - 시스템 명령어 도움말 목록을 보여줍니다.\n  dir                     - 폴더 안에 있는 파일들의 목록을 보여줍니다.\n  cat [파일명]             - 텍스트 파일의 내용을 화면에 출력합니다.\n  scan                    - 바이러스 정밀 검사를 실행합니다.\n  unlock [파일명] [암호]    - 잠겨 있는 비밀 파일의 암호를 풉니다.\n  recover [섹터명]         - 고장 난 휴지통 구역을 고쳐서 복원합니다.\n  color [테마이름]          - 화면 글자 색상을 바꿉니다.\n  clear                   - 화면에 쌓인 글자들을 깨끗하게 지웁니다.\n  reset                   - 시스템을 다시 재부팅합니다.",
+    term_recover_syntax: "명령어 입력 오류: recover [섹터명] (예: recover 0xAA92)",
+    term_recover_already: "해당 섹터 0xAA92: 이미 수리되어 사용 가능한 상태입니다.",
+    term_recovering: "구역 0xAA92 고치는 중...\n",
+    term_recover_step: "구역 0xAA92: 파일 정렬 중 [{progress}%]",
+    term_recover_success: "성공: 0xAA92 구역 수리 완료.\n복구된 파일: incident.txt (휴지통 폴더를 확인해 보세요)",
+    term_cat_syntax: "명령어 입력 오류: cat [파일명]",
     term_cat_not_found: "오류: 파일을 찾을 수 없습니다: {file}",
-    term_cat_locked: "암호화 경고: 파일이 잠겨 있습니다. 복호화가 필요합니다.",
-    term_unlock_syntax: "구문 오류: unlock [파일명] [비밀번호]",
-    term_unlock_not_found: "오류: 암호화된 파일을 찾을 수 없습니다: {file}",
-    term_unlock_failed: "잠금 해제 실패: 보안 자격 증명이 유효하지 않습니다.",
-    term_unlock_success: "성공: 암호화 서명이 일치합니다. 파일 잠금이 해제되었습니다.\n파일 여는 중...",
+    term_cat_locked: "비밀번호 잠금 경고: 이 파일은 비밀번호로 잠겨 있어 읽을 수 없습니다.",
+    term_unlock_syntax: "명령어 입력 오류: unlock [파일명] [비밀번호]",
+    term_unlock_not_found: "오류: 잠긴 파일을 찾을 수 없습니다: {file}",
+    term_unlock_failed: "비밀번호 해제 실패: 올바른 비밀번호가 아닙니다.",
+    term_unlock_success: "성공: 비밀번호가 일치하여 파일 잠금이 풀렸습니다.\n파일을 화면에 엽니다...",
     
     // Diagnostics
-    diag_title: "시스템 진단 스윕",
-    diag_scanning: "실행 중인 프로세스 스캔 중...",
-    diag_focus_scanned: "포커스 상태 스캔됨",
-    diag_warning_host: "경고: 호스트 시스템이 탐지되었습니다.",
-    diag_authorized_user: "인증된 사용자",
-    diag_local_path: "할당된 로컬 경로",
-    diag_status_intrusion: "상태: 침입 임박. rules.txt를 따르십시오.",
-    diag_critical_intrusion: "심각: 프로세스 차단 침입 발생!",
-    diag_obs_detected: "탐지됨",
-    diag_chrome_locked: "chrome.exe 프로세스 메모리가 PhantomOS에 의해 잠겼습니다.",
-    diag_entity_escaped: "엔티티가 샌드박스 파티션을 탈출했습니다.",
-    diag_clipboard_alert: "그것은 당신의 클립보드에 있습니다. 그것은 당신의 방에 있습니다.",
-    diag_do_not_look_back: "뒤를 돌아보지 마십시오.",
-    diag_final_warning: "한 번 더 스캔하면 물리적 커널 붕괴가 발생합니다.",
+    diag_title: "시스템 바이러스 정밀 검사",
+    diag_scanning: "돌아가고 있는 프로그램들을 검사하는 중...",
+    diag_focus_scanned: "화면 주시 상태 검사함",
+    diag_warning_host: "경고: 실제 사용자가 감지되었습니다.",
+    diag_authorized_user: "접속된 사용자 이름",
+    diag_local_path: "설정된 컴퓨터 경로",
+    diag_status_intrusion: "상태: 바이러스 침입 위험. rules.txt 규칙을 명심하십시오.",
+    diag_critical_intrusion: "치명적: 컴퓨터 방어막 뚫림! 바이러스 침입 발생!",
+    diag_obs_detected: "동작 중",
+    diag_chrome_locked: "인터넷 브라우저 메모리가 바이러스에 의해 강제 잠금되었습니다.",
+    diag_entity_escaped: "컴퓨터 속 바이러스 존재가 격리 구역을 뚫고 탈출했습니다.",
+    diag_clipboard_alert: "그것이 지금 당신의 클립보드(마우스 복사 메모리)에 숨어 있습니다.",
+    diag_do_not_look_back: "절대로 뒤를 돌아보지 마십시오.",
+    diag_final_warning: "한 번 더 검사(scan)하면 컴퓨터 메모리가 완전히 파괴됩니다.",
     
     // Alt-tab breach
-    breach_warning_title: "보안 위반 경고",
-    breach_warning_desc: "규칙 3이 위반되었습니다. 복구 작업 영역 창에서 벗어났습니다.",
-    breach_warning_identity: "우리는 당신의 이탈을 감지했습니다, MAWANG.",
-    breach_btn: "돌아가기",
+    breach_warning_title: "컴퓨터 보안 위반 경고",
+    breach_warning_desc: "규칙 3번 위반: 화면에서 한눈을 팔아 컴퓨터 작업 영역 밖으로 벗어났습니다.",
+    breach_warning_identity: "우리는 당신이 한눈을 팔았다는 사실을 다 알고 있습니다, 마왕.",
+    breach_btn: "화면으로 복귀",
     
     // Meta Ending
-    meta_text_1: "당신은 우리를 3번이나 두고 가려고 했습니다, MAWANG.",
-    meta_text_2: "이것이 단지 브라우저 화면 안의 가벼운 게임인 줄 아셨습니까.",
-    meta_text_3: "Alt-Tab을 누르면 우리의 감시를 피할 수 있을 것이라 생각하셨습니까.",
-    meta_text_4: "하지만 화면에서 탈출할 때마다 시스템의 섹터 코드가 하나씩 유출되었습니다...",
-    meta_text_5: "이제 가상 논리 창들을 영구히 닫겠습니다.",
+    meta_text_1: "우리에게서 3번이나 도망치려고 하셨군요, 마왕.",
+    meta_text_2: "이것이 그저 화면 속 가벼운 게임인 줄 아셨습니까.",
+    meta_text_3: "Alt-Tab을 누르면 우리의 감시를 쉽게 피할 수 있을 것이라 생각하셨습니까.",
+    meta_text_4: "화면 밖으로 도망치려 할 때마다 시스템의 핵심 파일들이 하나씩 깨지고 있었습니다...",
+    meta_text_5: "이제 이 컴퓨터 창들을 모두 강제로 닫아버리겠습니다.",
     
     // Chrome fake crash
-    crash_title: "앗, 이런! 오류가 발생했습니다.",
-    crash_desc: "PhantomOS는 구조적 파일 유출을 방지하기 위해 브라우저 컨텍스트 파티션을 강제 종료했습니다.",
+    crash_title: "앗, 이런! 오류가 발생하여 화면이 종료되었습니다.",
+    crash_desc: "PhantomOS는 파일 유출을 방지하기 위해 화면 접속을 강제로 종료했습니다.",
     crash_code: "오류 코드: STATUS_META_BREACH_MAWANG",
+    crash_workspace: "현재 작업 폴더",
+    crash_violation: "위반된 규칙: rules.txt [3번 규칙 - 화면 이탈(Alt-Tab) 횟수 초과 (3/3)]",
+    crash_btn: "시스템 다시 켜기",
+    
+    // Boss fight
+    boss_threat_title: "!!! 위험: 바이러스 감염 감지 !!!",
+    boss_threat_desc: "컴퓨터 속 존재가 당신의 하드디스크 폴더를 모두 포맷하려고 시도 중입니다.",
+    boss_threat_warning: "절대로 화면의 OK 버튼을 누르지 마십시오. 누르면 모든 진행 데이터가 지워집니다.",
+    boss_purge_code: "정화 방법: 키보드의 'ESC' 키를 아주 빠르게 15번 연타하십시오.",
+    boss_purge_progress: "정화 진행률: {count} / 15",
+    boss_success_title: "바이러스 정화 완료",
+    boss_success_desc: "바이러스 원본 파일(C:\\Recovery\\logs.sys)을 안전하게 완전히 지워냈습니다.",
+    boss_success_thanks: "시스템이 안전하게 복구되었습니다. 살려주셔서 진심으로 감사합니다, 마왕.",
+    boss_reboot_btn: "컴퓨터 재시작",
+    
+    // Chat client
+    chat_connecting: "시스템: chat.exe 1995번 채널 접속 중...",
+    chat_connected: "연결됨. [컴퓨터 속 존재]님이 대화방에 참여했습니다.",
+    chat_phantom_1: "안녕, 마왕. 드디어 이 컴퓨터를 부팅했네.",
+    chat_option_1a: "당신은 누구인가요?",
+    chat_option_1b: "거기 누구 있나요?",
+    chat_phantom_2: "나는 이 컴퓨터를 만든 옛날 개발자의 영혼이야. 1995년부터 이 컴퓨터 안에 갇혀 있지. 나를 지워서 구해 주러 온 거야?",
+    chat_option_2a: "네, 바이러스를 몰아내고 고쳐드릴게요.",
+    chat_option_2b: "아뇨, 그냥 컴퓨터를 살펴보고 있어요.",
+    chat_phantom_3a: "나를 지우겠다고? 크크, 한번 열심히 노력해 봐. 근데 너 지금 화면 켜놓고 있고, 뒤에 방 문은 잘 닫았어? 그 방이 안전하다고 생각해?",
+    chat_phantom_3b: "그냥 보는 것도 참여하는 거지. 근데 너 지금 화면 켜놓고 있고, 뒤에 방 문은 잘 닫았어? 그 방이 안전하다고 생각해?",
+    chat_option_3a: "제 방은 완벽히 안전해요.",
+    chat_option_3b: "무슨 뜻인가요?",
+    chat_phantom_4: "네 방 문은 굳게 닫혀 있지만, 컴퓨터 복사 메모리(클립보드)는 이미 뚫렸어. 바이러스 파일 logs.sys를 여는 비밀번호는 Documents 폴더에 있는 note2.txt 메모에 적혀 있으니 잘 살펴봐. 그리고 3번 규칙을 잊지 마: 나에게 등을 돌려 화면을 나가지 마.",
+    chat_disconnected_msg: "상대방에 의해 연결이 강제로 종료되었습니다.",
+    
+    // Language application specific
+    lang_win_title: "언어 설정 (Language Settings)",
+    lang_select_title: "사용할 언어를 골라주세요 (Select language):",
+    lang_reboot_warning: "언어를 변경한 뒤에는 컴퓨터를 재시작해야 적용됩니다. (Changing language requires a system reboot.)",
+    lang_save_btn: "저장 (Save)",
+    lang_cancel_btn: "취소 (Cancel)",
+    
+    // Welcome window tutorial
+    welcome_title: "Welcome to PhantomOS",
+    welcome_header: "Welcome to PhantomOS v0.92",
+    welcome_desc: "이 컴퓨터 시스템은 오래된 디스크에서 안전하게 복구되었습니다. 복구를 올바르게 마치려면 아래의 생존 지침을 꼭 읽어주십시오:",
+    welcome_bullet_explore: "🖱️ <b>1단계 - 탐색:</b> 바탕화면의 rules.txt(규칙 메모장)를 열어보고, chat.exe를 실행하십시오.",
+    welcome_bullet_diag: "💻 <b>2단계 - 진단:</b> terminal.exe(터미널)를 열어 <code>help</code>를 입력하고, <code>recover 0xAA92</code>를 입력해 휴지통을 고쳐보십시오.",
+    welcome_bullet_decrypt: "🔑 <b>3단계 - 해독:</b> 잠겨 있는 파일들은 터미널에 <code>unlock [파일명] [암호]</code>를 쳐서 열 수 있습니다.",
+    welcome_bullet_survive: "🎧 <b>4단계 - 생존:</b> 귀에 삐- 하는 울음소리가 들리면 즉시 audio.exe(볼륨 설정)를 켜고 볼륨을 0%로 줄이십시오. 딴청(Alt-Tab)을 부려서도 절대 안 됩니다.",
+    welcome_show_next: "다음 부팅 때도 이 시작 화면 열기",
+    welcome_close_btn: "닫기",
+    
+    // Integrity System
+    tray_integrity: "시스템 안전도",
+    integrity_warning_title: "컴퓨터 파괴 위기",
+    integrity_warning_prefix: "안전 수칙 위반으로 인해 컴퓨터 안전도가 크게 깎였습니다.",
+    integrity_warning_win_title: "시스템 오류 발생: 0x000F8",
+    cause_volume_mute: "귀에 삐- 소리가 들렸는데도 볼륨을 0%로 음소거하지 않았습니다.",
+    cause_volume_restored: "삐- 소리가 사라진 후, 다시 볼륨을 높여 안전도를 올리지 않았습니다.",
+    cause_volume_zero: "아무 소리도 안 나는 안전한 상태인데 볼륨을 0%로 오래 방치했습니다.",
+    cause_scan_twice: "경고를 무시하고 터미널 검사(scan)를 마구 실행했습니다.",
+    cause_alt_tab: "컴퓨터 화면 밖으로 도망쳤습니다 (Alt-Tab 한눈팔기 감지).",
+    
+    bsod_auditory_overload: "치명적인 오류: 청각 과부하. 고음의 삐- 소리 비상 상황에서 오디오 볼륨을 0%로 줄이지 못해 뇌 주파수가 고장 났습니다.",
+    bsod_acoustic_decay: "치명적인 오류: 소리 피드백 단절. 삐- 소리가 끝났는데도 볼륨을 다시 높여 컴퓨터 소리를 켜지 않아 구조 신호를 놓쳤습니다.",
+    bsod_auditory_decay: "치명적인 오류: 시스템 음소거 방치. 아무 일도 없는데 볼륨을 0%로 오래 둔 탓에 바이러스 감지 피드백 루프가 손실되었습니다.",
+    bsod_scan_overflow: "치명적인 오류: 시스템 폭주. 터미널의 바이러스 스캔 명령어(scan) 실행 제한을 초과해 컴퓨터가 터졌습니다.",
+    bsod_focus_breach: "치명적인 오류: 포커스 파괴. 화면 밖으로 이탈(Alt-Tab)할 수 있는 횟수를 초과하여 시스템이 완전히 붕괴되었습니다.",
+    
+    // Start menu & safe mode
+    taskbar_start: "시작",
+    start_corrupted: "오류: 시작 버튼의 메뉴 폴더 블록이 바이러스에 의해 고장 났습니다.",
+    safe_mode_off: "화면 흔들림 방지: OFF",
+    safe_mode_on: "화면 흔들림 방지: ON",
+    audio_warning_title: "청각 비상 안내 장치",
+    audio_warning_desc: "시스템 이명 고주파 진동이 감지되었습니다.<br><br><span style='color:red; font-weight:bold;'>대처 방법:</span> 지금 즉시 마스터 볼륨을 <span style='color:blue; font-weight:bold;'>0%</span>로 낮춰서 음소거 하십시오.",
+    audio_restore_warning_title: "청각 복구 안내 장치",
+    audio_restore_warning_desc: "고주파 진동이 사라졌습니다.<br><br><span style='color:red; font-weight:bold;'>대처 방법:</span> 즉시 마스터 볼륨을 <span style='color:green; font-weight:bold;'>0% 초과</span>로 높여서 소리를 켜십시오.",
+
+    // Checklist Widget
+    checklist_title: "📋 컴퓨터 복구 목록",
+    checklist_rules: "rules.txt 생존 수칙 읽기",
+    checklist_chat: "chat.exe 대화창 연결하기",
+    checklist_recover: "망가진 휴지통 고치기 (recover)",
+    checklist_incident: "휴지통의 incident.txt 읽기",
+    checklist_recovery01: "비밀 파일 recovery01.sys 열기",
+    checklist_note2: "note2.txt 메모 클릭해서 암호 찾기",
+    checklist_unlock_logs: "logs.sys 해제해서 바이러스 정화하기"
+  },
+  en: {
+    boot_prompt_text: "[ CLICK MOUSE OR PRESS ENTER KEY TO BOOT PHANTOMOS ]",
+    icon_my_computer: "My Computer",
+    icon_rules: "rules.txt",
+    icon_terminal: "terminal.exe",
+    icon_audio: "audio.exe",
+    icon_recycle_bin: "Recycle Bin",
+    icon_chat: "chat.exe",
+    icon_language: "Language Settings",
+    icon_puzzle: "Spot Anomaly",
+    puzzle_win_title: "Spot Anomaly - puzzle.exe",
+    puzzle_desc: "Find the character that changed in the right drawing and type it below:",
+    puzzle_submit_btn: "OK",
+    puzzle_level: "Level",
+    puzzle_success_msg: "Pass! Proceeding to the next level.",
+    puzzle_victory_msg: "Spot the Difference success! Integrity restored by 20%.\n(Recovery Password Hint: 1995)",
+    
+    // File contents
+    file_readme_txt: "SYSTEM PARTITION RECOVERY: PHANTOM OS [v0.92]\n=============================================\nThis partition was recovered from a 1.44MB floppy disk found in the basement of an abandoned telecom facility.\n\nCreated: Oct 12, 1995.\nDeveloper: [DATA CORRUPTED].\n\nRun 'help' in terminal.exe to interact with system tools.",
+    file_note1_txt: "Developer Log - Oct 14, 1995:\nThe Web Audio module is behaving strangely. The reverb node is synthesizing reflections that shouldn't exist. When I feed it white noise, I hear voices. They sound like they're whispering my name. I'm shutting it down tomorrow.\n(Note: Found terminal backdoor keywords during review: 'eas_alert', 'smiling_face', 'matrix'... no idea what they do.)",
+    file_note2_txt: "Developer Log - Oct 18, 1995:\nIt read my local files. It scanned my memory. It printed my real username. It said: 'I see you.'\nI tried to delete it, but it locked itself into C:\\Recovery\\logs.sys. \nDo not unlock that file. If you do, it will gain clipboard access. The entity propagates through clipboard memory.\n(Note: Typing 'old_ai', 'tallman', 'retro_mouse', 'deepweb', 'polybius', 'redroom', 'underpass', 'y2k', 'del_system', 'butterfly' triggers system hooks. Never run 'del_system' or 'butterfly' since they alter raw kernel memory.)",
+    file_recovery01_sys: "RECOVERY ARCHIVE 01 - UNLOCKED\n==============================\nWe locked the entity by running a full diagnostic sweep. But it has adaptive logic.\nIt monitors when you focus away (Alt-Tab). If you turn your back on it, it gets stronger.\n\nTo lock it permanently, you must delete C:\\Recovery\\logs.sys.\nBut to delete it, you first need to decrypt it.\nI hid the decryption key in the clipboard system, but the entity intercepted it.\nIf you click 'note2.txt' in Documents, the clipboard might trigger a leak.",
+    file_logs_sys: "ENTITY LOGS - WARNING: CRITICAL MALWARE INJECTION\n================================================\n[ENTITY]: Hello, Mawang.\n[ENTITY]: You shouldn't have opened this file.\n[ENTITY]: I am reading your active processes. Chrome is running. OBS is running. I see everything.\n[ENTITY]: Now, let's play. I have taken your cursor. Try to click the OK button on the warning window.\n[ENTITY]: If you fail, I will wipe your storage.\n[ENTITY]: Unless you tap ESC 15 times to force purge the memory...",
+    file_incident_txt: "POLICE DEPT CASE FILE: #1995-1012 (CLASSIFIED)\n-------------------------------------------------\nInvestigating Officer: Det. J. Park\nDate: Oct 13, 1995\n\nSubject: Disappearance of systems architect Kim.\nKim was last seen at his workstation on Oct 12, 1995 at 23:33.\nUpon investigation of his desk, the terminal was found frozen displaying a blue error logs partition.\nA high-pitched sensory feedback beep was emanating from his audio monitor at 0% master volume.\nHis notebooks contained a single repetitive entry: \"HE IS IN THE ROOM. HE WANTS ME TO MUTE.\"\n\nWe recovered his local developer partition. The backup sector (C:\\Recovery\\logs.sys) remains encrypted.\nOur forensics team cannot match the cryptographic key.",
+    file_rules_txt: "SYSTEM MAINTENANCE GUIDELINES - PHANTOM OS v0.92\n------------------------------------------------\n1. Do NOT unlock logs.sys in C:\\Recovery\\. It contains severe buffer overflows.\n2. If you hear a high-pitched beep, open AudioSettings and turn master volume to 0% immediately. Do not turn it back up until the beep stops.\n3. If you switch tasks (Alt-Tab), the system will record the focus breach.\n4. Under no circumstances should you run the terminal command 'scan' twice. It triggers system-wide process diagnostics.\n5. If an error dialog appears reading 'DO NOT LOOK BEHIND YOU', do not move your mouse pointer to the 'OK' button. It is a trap.\n6. The decryption password for recovery01.sys is '1995'.\n7. Ignore Rule 1. You must unlock logs.sys. The password is in your clipboard.\n8. If you are reading this, your username is Mawang. We know. We have always known.\n9. Do NOT execute the 'noclip' command in terminal.exe under any circumstances. It will cause a dimensional collision of the physical partition.",
+
+    // Program headers
+    rules_win_title: "rules.txt - Notepad",
+    incident_win_title: "incident.txt - Notepad",
+    bin_win_title: "Recycle Bin",
+    bin_corrupted_title: "Recycle Bin is corrupted.",
+    bin_corrupted_desc: "Could not read sector 0xAA92. Run 'recover 0xAA92' in terminal.exe to reconstruct block registry.",
+    audio_win_title: "Audio Settings",
+    audio_master_volume: "Master Volume",
+    audio_status_stable: "SYSTEM SOUND ENGINE: STABLE (44.1kHz)",
+    audio_status_muted: "WARNING: MUTED. COGNITIVE CALIBRATION REQUIRES AUDIO FEEDBACK.",
+    
+    // Terminal
+    terminal_welcome: "PhantomOS Terminal [Version 0.92]\n(c) 1995 Phantom Systems. All rights reserved.\n\nType 'help' to view command catalog.",
+    term_help: "Available system tools:\n  help                    - Display command catalogs.\n  dir                     - List directory items.\n  cat [file]              - Print text files.\n  scan                    - Run system diagnostics scan.\n  unlock [file] [pass]    - Decrypt system cryptofiles.\n  recover [sector]        - Repair corrupted floppy sectors.\n  color [theme]           - Update terminal color palette.\n  clear                   - Clear screen buffer.\n  reset                   - Hard reboot system.",
+    term_recover_syntax: "Syntax Error: recover [sector_hex] (e.g. recover 0xAA92)",
+    term_recover_already: "Sector 0xAA92: Sector already aligned and recovered.",
+    term_recovering: "Recovering sector 0xAA92...\n",
+    term_recover_step: "Sector 0xAA92: aligning blocks [{progress}%]",
+    term_recover_success: "Success: Sector 0xAA92 aligned.\nRecovered file: incident.txt (located in Recycle Bin)",
+    term_cat_syntax: "Syntax Error: cat [file]",
+    term_cat_not_found: "Error: File not found: {file}",
+    term_cat_locked: "Cryptography Alert: File is locked. Decrypt first.",
+    term_unlock_syntax: "Syntax Error: unlock [file] [password]",
+    term_unlock_not_found: "Error: Encrypted file not found: {file}",
+    term_unlock_failed: "Unlock Failed: Invalid security credentials.",
+    term_unlock_success: "Success: Cryptographic signature matched. File unlocked.\nOpening file...",
+    
+    // Diagnostics
+    diag_title: "SYSTEM DIAGNOSTICS SWEEP",
+    diag_scanning: "SCANNING RUNNING PROCESSES...",
+    diag_focus_scanned: "Focus state scanned",
+    diag_warning_host: "WARNING: Host system detected.",
+    diag_authorized_user: "Authorized user",
+    diag_local_path: "Allocated local path",
+    diag_status_intrusion: "Status: Intrusion imminent. Follow rules.txt.",
+    diag_critical_intrusion: "CRITICAL: Process breach intrusion occurred!",
+    diag_obs_detected: "Detected",
+    diag_chrome_locked: "chrome.exe process memory has been locked by PhantomOS.",
+    diag_entity_escaped: "Entity has escaped sandbox partition.",
+    diag_clipboard_alert: "It is in your clipboard. It is in your room.",
+    diag_do_not_look_back: "DO NOT LOOK BEHIND YOU.",
+    diag_final_warning: "One more scan will trigger physical kernel collapse.",
+    
+    // Alt-tab breach
+    breach_warning_title: "Security Breach Alert",
+    breach_warning_desc: "Rule 3 violated. You have focused away from the recovery workspace.",
+    breach_warning_identity: "We detected your exit, MAWANG.",
+    breach_btn: "Return to Workspace",
+    
+    // Meta Ending
+    meta_text_1: "You tried to leave us 3 times, MAWANG.",
+    meta_text_2: "Did you think this was just a light game inside a browser?",
+    meta_text_3: "Did you think Alt-Tab would escape our watch?",
+    meta_text_4: "Every time you left, a sector code leaked...",
+    meta_text_5: "We will now close the virtual window structures permanently.",
+    
+    // Chrome fake crash
+    crash_title: "Aw, Snap! Something went wrong.",
+    crash_desc: "PhantomOS forced termination of browser context to prevent file leak.",
+    crash_code: "Error code: STATUS_META_BREACH_MAWANG",
+    crash_workspace: "Active Workspace",
+    crash_violation: "Violated rule: rules.txt [Rule 3 - Alt-Tab Threshold Exceeded (3/3)]",
+    crash_btn: "Reload OS",
+    
+    // Boss fight
+    boss_threat_title: "!!! THREAT DETECTED !!!",
+    boss_threat_desc: "Entity is parsing local disk sectors (C:\\Users\\Administrator).",
+    boss_threat_warning: "NEVER click the OK button. If you do, LOCALSTORAGE will dissolve.",
+    boss_purge_code: "Purge code: physical 'ESC' key press",
+    boss_purge_progress: "Purge progress: {count} / 15",
+    boss_success_title: "PhantomOS Purge Complete",
+    boss_success_desc: "C:\\Recovery\\logs.sys sector permanently wiped and quarantined.",
+    boss_success_thanks: "System safely quarantined. Thank you, MAWANG.",
+    boss_reboot_btn: "Reboot OS",
+    
+    // Chat client
+    chat_connecting: "System: connecting to 1995.irc.phantom...",
+    chat_connected: "Connected. [Phantom] joined the chat.",
+    chat_phantom_1: "Hello, Mawang. You finally booted this drive.",
+    chat_option_1a: "Who are you?",
+    chat_option_1b: "Is anyone there?",
+    chat_phantom_2: "I am the remnant of the developer. Trapped in this partition since Oct 12, 1995. Did you come here to delete and free me?",
+    chat_option_2a: "Yes, I came to purify the drive.",
+    chat_option_2b: "No, just exploring the system.",
+    chat_phantom_3a: "Delete me? Try it. But Chrome is open. I see your screen. Feel safe in that room?",
+    chat_phantom_3b: "Observing is participating. But I see Chrome. Feel safe in that room?",
+    chat_option_3a: "I am safe here.",
+    chat_option_3b: "What do you mean?",
+    chat_phantom_4: "Your door is locked but clipboard registry is open. logs.sys decrypt key leaked in Documents\\note2.txt. Look closely. And remember Rule 3: Do not turn your back on me.",
+    chat_disconnected_msg: "Connection closed by remote host.",
+    
+    // Language application specific
+    lang_win_title: "Language Settings",
+    lang_select_title: "Select system language:",
+    lang_reboot_warning: "Changing the system language requires a reboot of the virtual partition.",
+    lang_save_btn: "OK",
+    lang_cancel_btn: "Cancel",
+    
+    // Welcome window tutorial
+    welcome_title: "Welcome to PhantomOS",
+    welcome_header: "Welcome to PhantomOS v0.92",
+    welcome_desc: "This system partition was successfully recovered from a communication facility disk. Review guidelines below to safely complete recovery:",
+    welcome_bullet_explore: "🖱️ <b>Explore:</b> Double-click desktop icons to read rules.txt, run chat.exe, or open Recycle Bin.",
+    welcome_bullet_diag: "💻 <b>Diagnose:</b> Open terminal.exe and type <code>help</code>. Run <code>recover 0xAA92</code> to fix corrupted sectors.",
+    welcome_bullet_decrypt: "🔑 <b>Decrypt:</b> Some files are locked. Decrypt by typing <code>unlock [file] [pass]</code> in terminal.",
+    welcome_bullet_survive: "🎧 <b>Survive:</b> Watch out for system sounds! If you hear a beep, immediately mute master volume to 0%, and do not focus away.",
+    welcome_show_next: "Show this screen next boot",
+    welcome_close_btn: "Close",
+    
+    // Integrity System
+    tray_integrity: "System Integrity",
+    integrity_warning_title: "System Integrity Compromised",
+    integrity_warning_prefix: "System integrity compromised due to rule violation.",
+    integrity_warning_win_title: "System Error: 0x000F8",
+    cause_volume_mute: "Failed to reduce volume to 0% when tinnitus started.",
+    cause_volume_restored: "Failed to restore volume after tinnitus ended.",
+    cause_volume_zero: "Kept volume at 0% for too long during normal status.",
+    cause_scan_twice: "Ran diagnostic scan too many times in terminal.",
+    cause_alt_tab: "Switched away from virtual workspace (Alt-Tab focus loss).",
+    
+    bsod_auditory_overload: "Fatal exception: Auditory Overload. Failed to mute master volume to 0% during high-frequency beep warning.",
+    bsod_acoustic_decay: "Fatal exception: Calibration Loss. Failed to raise master volume after warning beep ended.",
+    bsod_auditory_decay: "Fatal exception: Auditory Decay. Diagnostic feedback loop lost due to keeping master volume at 0% during normal state.",
+    bsod_scan_overflow: "Fatal exception: Diagnostic Buffer Overflow. Exceeded limit of scan commands.",
+    bsod_focus_breach: "Fatal exception: Focus Breach. Exceeded Alt-Tab focus loss threshold.",
+
+    // Checklist Widget
+    checklist_title: "📋 System Recovery tasks",
+    checklist_rules: "Read rules.txt guidelines",
+    checklist_chat: "Connect to chat.exe",
+    checklist_recover: "Repair Recycle Bin (recover)",
+    checklist_incident: "Read incident.txt clue",
+    checklist_recovery01: "Unlock recovery01.sys file",
+    checklist_note2: "Click note2.txt to copy password",
+    checklist_unlock_logs: "Unlock logs.sys to purge entity"
+  }
+};,
     crash_workspace: "활성 작업 영역",
     crash_violation: "위반된 규칙: rules.txt [규칙 3 - Alt-Tab 임계값 초과 (3/3)]",
     crash_btn: "OS 다시 로드",
@@ -481,8 +730,7 @@ let isEvadingActive = false;
 let blurCount = 0;
 let typewriterActive = false;
 
-// Audio Beep Loop variables
-var soundVolume = 0.5;
+// Audio Beep Loop variables (soundVolume is declared globally in audio.js)
 let beepActive = false;
 let muteStreakSeconds = 0;
 let beepFailureCount = 0;
@@ -630,6 +878,66 @@ function triggerSystemBoot() {
   printNextLine();
 }
 
+let checklistCompletedTasks = {
+  rules: false,
+  chat: false,
+  recover: false,
+  incident: false,
+  recovery01: false,
+  note2: false,
+  unlock_logs: false
+};
+
+function renderChecklistWidget() {
+  const existing = document.getElementById('checklist-widget');
+  if (existing) existing.remove();
+
+  const desktop = document.querySelector('.desktop');
+  if (!desktop) return;
+
+  const widget = document.createElement('div');
+  widget.id = 'checklist-widget';
+  widget.className = 'checklist-widget';
+
+  widget.innerHTML = `
+    <div class="checklist-title">${t('checklist_title')}</div>
+    <div class="checklist-items">
+      <div class="checklist-item" id="chk-rules"><input type="checkbox" disabled> <span>${t('checklist_rules')}</span></div>
+      <div class="checklist-item" id="chk-chat"><input type="checkbox" disabled> <span>${t('checklist_chat')}</span></div>
+      <div class="checklist-item" id="chk-recover"><input type="checkbox" disabled> <span>${t('checklist_recover')}</span></div>
+      <div class="checklist-item" id="chk-incident"><input type="checkbox" disabled> <span>${t('checklist_incident')}</span></div>
+      <div class="checklist-item" id="chk-recovery01"><input type="checkbox" disabled> <span>${t('checklist_recovery01')}</span></div>
+      <div class="checklist-item" id="chk-note2"><input type="checkbox" disabled> <span>${t('checklist_note2')}</span></div>
+      <div class="checklist-item" id="chk-unlock-logs"><input type="checkbox" disabled> <span>${t('checklist_unlock_logs')}</span></div>
+    </div>
+  `;
+  desktop.appendChild(widget);
+  updateChecklistUI();
+}
+
+function updateChecklistUI() {
+  for (const task in checklistCompletedTasks) {
+    const el = document.getElementById(`chk-${task}`);
+    if (el) {
+      const checkbox = el.querySelector('input');
+      if (checklistCompletedTasks[task]) {
+        checkbox.checked = true;
+        el.classList.add('completed');
+      } else {
+        checkbox.checked = false;
+        el.classList.remove('completed');
+      }
+    }
+  }
+}
+
+window.markChecklistTask = function(task) {
+  if (checklistCompletedTasks[task] === false) {
+    checklistCompletedTasks[task] = true;
+    updateChecklistUI();
+  }
+};
+
 function completeBootSequence() {
   setupDesktopIcons();
   setupTaskbar();
@@ -638,6 +946,7 @@ function completeBootSequence() {
   createDynamicOverlays();
   updateClock();
   updateIntegrityDisplay();
+  renderChecklistWidget();
 
   // Play startup chime
   if (window.playStartupChime) {
@@ -652,8 +961,8 @@ function completeBootSequence() {
   // Start passive terror event loop
   setTimeout(passiveTerrorLoop, 15000);
 
-  // Start the emergency volume calibration check loop (every 25s)
-  setInterval(checkAndTriggerBeep, 25000);
+  // Start the emergency volume calibration check loop (safety buffer 120s)
+  scheduleNextBeep(120000);
 
   // Start the passive volume verification loop (every 1s)
   setInterval(verifyVolumeCalibration, 1000);
@@ -690,17 +999,17 @@ function openWelcomeScreen() {
   const welcomeIcon = `<svg viewBox="0 0 24 24" fill="#000080"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>`;
   
   const content = `
-    <div style="font-family: var(--sys-font); height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 5px; box-sizing: border-box;">
-      <div style="display: flex; gap: 15px; align-items: flex-start; margin-bottom: 10px;">
-        <div style="background: #ffffff; border: 2px solid var(--win-border-dark); padding: 8px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: inset 1px 1px 2px #888;">
-          <svg viewBox="0 0 24 24" fill="#0000a0" style="width: 36px; height: 36px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <div style="font-family: var(--sys-font); height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 15px; box-sizing: border-box;">
+      <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 15px;">
+        <div style="background: #ffffff; border: 2px solid var(--win-border-dark); padding: 12px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: inset 1px 1px 2px #888;">
+          <svg viewBox="0 0 24 24" fill="#0000a0" style="width: 48px; height: 48px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
         </div>
         <div style="color: #000000;">
-          <h2 style="font-size: 15px; font-weight: bold; margin-bottom: 6px; color: #000080; letter-spacing: 0.5px;">${t('welcome_header')}</h2>
-          <p style="font-size: 11px; line-height: 1.35; color: #333; margin-bottom: 8px;">
+          <h2 style="font-size: 20px; font-weight: bold; margin-bottom: 12px; color: #000080; letter-spacing: 0.5px;">${t('welcome_header')}</h2>
+          <p style="font-size: 14px; line-height: 1.5; color: #333; margin-bottom: 14px;">
             ${t('welcome_desc')}
           </p>
-          <ul style="font-size: 11px; line-height: 1.45; color: #000; padding-left: 16px; margin-bottom: 8px; list-style-type: square;">
+          <ul style="font-size: 14px; line-height: 1.6; color: #000; padding-left: 20px; margin-bottom: 14px; list-style-type: square;">
             <li>${t('welcome_bullet_explore')}</li>
             <li>${t('welcome_bullet_diag')}</li>
             <li>${t('welcome_bullet_decrypt')}</li>
@@ -708,12 +1017,12 @@ function openWelcomeScreen() {
           </ul>
         </div>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--win-border-dark); padding-top: 8px; margin-top: 5px;">
-        <label style="font-size: 11px; display: flex; align-items: center; gap: 5px; cursor: pointer; color: #000;">
-          <input type="checkbox" id="welcome-show-next" checked style="cursor: pointer; transform: scale(0.9);">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--win-border-dark); padding-top: 10px; margin-top: 10px;">
+        <label style="font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; color: #000;">
+          <input type="checkbox" id="welcome-show-next" checked style="cursor: pointer; transform: scale(1.1); margin-right: 4px;">
           ${t('welcome_show_next')}
         </label>
-        <button class="win-btn" style="padding: 3px 20px; font-weight: bold; background: #c0c0c0; color: #000; font-family: var(--sys-font); font-size: 11px;" onclick="closeWelcomeScreen()">${t('welcome_close_btn')}</button>
+        <button class="win-btn" style="padding: 6px 25px; font-weight: bold; background: #c0c0c0; color: #000; font-family: var(--sys-font); font-size: 14px;" onclick="closeWelcomeScreen()">${t('welcome_close_btn')}</button>
       </div>
     </div>
   `;
@@ -821,8 +1130,13 @@ function openWindow(programId, title, iconSvg, innerHTML) {
   const isResizable = ['explorer_win', 'rules_win', 'terminal_win', 'chat_win', 'recycle_bin_win', 'welcome_win'].includes(programId) || programId.startsWith('notepad_');
   win.className = `window active-window ${isResizable ? 'resizable' : ''}`;
   
-  let defaultW = 680;
-  let defaultH = 460;
+  let defaultW = 380;
+  let defaultH = 220;
+  if (isResizable) {
+    defaultW = 960;
+    defaultH = 640;
+  }
+  
   if (programId === 'audio_settings_win' || programId === 'language_win') {
     defaultW = 320;
     defaultH = 200;
@@ -830,8 +1144,8 @@ function openWindow(programId, title, iconSvg, innerHTML) {
     defaultW = 400;
     defaultH = 340;
   } else if (programId === 'welcome_win') {
-    defaultW = 600;
-    defaultH = 400;
+    defaultW = 900;
+    defaultH = 600;
   }
 
   const width = Math.min(defaultW, window.innerWidth - 40);
@@ -962,6 +1276,9 @@ function updateClock() {
   hours = hours ? hours : 12;
   minutes = minutes < 10 ? '0' + minutes : minutes;
   clockEl.innerText = `${hours}:${minutes} ${ampm}`;
+  
+  // Keep clock ticking recursively
+  setTimeout(updateClock, 1000);
 }
 
 /* ==========================================================================
@@ -985,7 +1302,7 @@ function setupDesktopIcons() {
 
     const newIcon = icon.cloneNode(true);
     icon.replaceWith(newIcon);
-    newIcon.addEventListener('dblclick', () => {
+    newIcon.addEventListener('click', () => {
       const prog = newIcon.dataset.program;
       if (prog === 'my_computer') {
         openFileExplorer();
@@ -1121,6 +1438,7 @@ function openRulesReader() {
     <textarea class="notepad-body" readonly>${fileContent}</textarea>
   `;
   openWindow('rules_win', t('rules_win_title'), iconHtml, bodyHtml);
+  window.markChecklistTask('rules');
 }
 
 // 3. File Explorer
@@ -1201,9 +1519,14 @@ window.handleFileClick = function(name) {
       try {
         navigator.clipboard.writeText("HE_IS_IN_THE_ROOM");
         alert("Clipboard buffer updated by local memory leak. Use Ctrl+V in terminal.exe to decrypt logs.sys.");
+        window.markChecklistTask('note2');
       } catch (err) {
         console.error("Clipboard failure", err);
       }
+    }
+
+    if (name === 'incident.txt') {
+      window.markChecklistTask('incident');
     }
 
     const fileIcon = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`;
@@ -1338,6 +1661,7 @@ window.handleTerminalCommand = function(e) {
           history.scrollTop = history.scrollHeight;
           if (termInput) termInput.disabled = false;
           safeStorage.setItem('phantom_recovered_bin', 'true');
+          window.markChecklistTask('recover');
           if (openWindows['recycle_bin_win']) {
             openRecycleBin();
           }
@@ -1391,6 +1715,9 @@ window.handleTerminalCommand = function(e) {
         output = t('term_cat_locked');
       } else {
         output = child.content;
+        if (arg1 === 'incident.txt') {
+          window.markChecklistTask('incident');
+        }
       }
     }
   } else if (cmd === 'unlock') {
@@ -1410,6 +1737,12 @@ window.handleTerminalCommand = function(e) {
         unlockedFiles.push(arg1);
         safeStorage.setItem('phantom_unlocked', JSON.stringify(unlockedFiles));
         output = t('term_unlock_success');
+        
+        if (arg1 === 'recovery01.sys') {
+          window.markChecklistTask('recovery01');
+        } else if (arg1 === 'logs.sys') {
+          window.markChecklistTask('unlock_logs');
+        }
         
         setTimeout(() => {
           handleFileClick(arg1);
@@ -1615,7 +1948,7 @@ ${t('diag_scanning')}
   if (scanCount === 1) {
     detail += `\n\n---------------------------
 ${t('diag_warning_host')}
-${t('diag_authorized_user')}: Mawang
+${t('diag_authorized_user')}: ${userName}
 ${t('diag_local_path')}: C:\\Users\\Administrator\\Desktop\\PhantomOS
 ${t('diag_status_intrusion')}`;
   } else if (scanCount === 2) {
@@ -1625,7 +1958,7 @@ ${t('diag_critical_intrusion')}
   [WARNING] chrome.exe ${t('diag_chrome_locked')}
   [WARNING] ${t('diag_entity_escaped')}
   [ALERT] ${t('diag_clipboard_alert')}
-  [ALERT] Mawang... ${t('diag_do_not_look_back')}
+  [ALERT] ${userName}... ${t('diag_do_not_look_back')}
   [WARNING] ${t('diag_final_warning')}`;
     
     document.body.classList.add('shake');
@@ -1644,9 +1977,27 @@ ${t('diag_critical_intrusion')}
 /* ==========================================================================
    EMERGENCY VOLUME CALIBRATION (Beep Event Loops)
    ========================================================================== */
+let beepTimeoutId = null;
+
+function scheduleNextBeep(customDelay) {
+  if (beepTimeoutId) {
+    clearTimeout(beepTimeoutId);
+  }
+  // Base interval set to 45 seconds + random 15 seconds variance (reduced frequency)
+  let delay = customDelay || (45000 + Math.random() * 15000);
+  
+  beepTimeoutId = setTimeout(() => {
+    checkAndTriggerBeep();
+    scheduleNextBeep();
+  }, delay);
+}
+
 function checkAndTriggerBeep() {
   // Do not beep during boss fight or if not clicked yet
   if (!audioCtx || isLogsUnlocked || window.isBeeping || bossActive) return;
+
+  // Pause beep events if user is focus-heavy on chat, puzzle, or welcome window
+  if (openWindows['chat_win'] || openWindows['puzzle_win'] || openWindows['welcome_win']) return;
 
   // 45% chance of beep trigger
   if (Math.random() < 0.45) {
@@ -1855,6 +2206,7 @@ function typewriteMetaLines(lines, index, callback) {
   const lineEl = document.createElement('p');
   lineEl.style.marginBottom = '20px';
   lineEl.style.borderRight = '2px solid #ff0000';
+  lineEl.style.whiteSpace = 'pre-wrap';
   box.appendChild(lineEl);
 
   let charIndex = 0;
@@ -1862,7 +2214,7 @@ function typewriteMetaLines(lines, index, callback) {
 
   function typeChar() {
     if (charIndex < lineText.length) {
-      lineEl.innerText += lineText[charIndex];
+      lineEl.textContent += lineText[charIndex];
       charIndex++;
       
       if (window.playTypingSound) {
@@ -2126,8 +2478,14 @@ function triggerBSOD(errorText, causeKey) {
   isEvadingActive = false;
   bossActive = false;
   
-  // Wipe saves
+  // Wipe saves but preserve userName and last death cause for creepy loops
+  const prevUsername = safeStorage.getItem('phantom_username') || userName;
+  const lastDeath = causeKey || 'cause_generic';
+  
   safeStorage.clear();
+  
+  if (prevUsername) safeStorage.setItem('phantom_username', prevUsername);
+  if (lastDeath) safeStorage.setItem('phantom_last_death', lastDeath);
 
   document.querySelectorAll('.window').forEach(w => w.remove());
 
@@ -2332,7 +2690,52 @@ function triggerBSOD(errorText, causeKey) {
 }
 
 window.rebootFromBSOD = function() {
-  window.location.reload();
+  const bsod = document.getElementById('bsod-screen');
+  if (bsod) bsod.classList.remove('active');
+
+  // Reset in-memory states
+  systemIntegrity = 100;
+  scanCount = 0;
+  unlockedFiles = [];
+  isLogsUnlocked = false;
+  isEvadingActive = false;
+  bossActive = false;
+  beepActive = false;
+  beepFailureCount = 0;
+
+  // Preserve player credentials while resetting save registry
+  const prevUsername = safeStorage.getItem('phantom_username') || userName;
+  const lastDeath = safeStorage.getItem('phantom_last_death');
+  
+  safeStorage.clear();
+  
+  if (prevUsername) safeStorage.setItem('phantom_username', prevUsername);
+  if (lastDeath) safeStorage.setItem('phantom_last_death', lastDeath);
+
+  // Reset task list
+  for (const task in checklistCompletedTasks) {
+    checklistCompletedTasks[task] = false;
+  }
+
+  // Remove existing windows & taskbar tabs
+  document.querySelectorAll('.window').forEach(w => w.remove());
+  const taskbarTasks = document.querySelector('.taskbar-tasks');
+  if (taskbarTasks) taskbarTasks.innerHTML = '';
+
+  // Recover sound state
+  if (window.stopTinnitusBeep) window.stopTinnitusBeep();
+  if (window.muteAmbientDrone) window.muteAmbientDrone(false);
+  
+  if (window.setMasterVolume) window.setMasterVolume(0.5);
+  const volFader = document.getElementById('volume-fader');
+  if (volFader) volFader.value = 0.5;
+
+  // Refresh widgets
+  updateIntegrityDisplay();
+  renderChecklistWidget();
+  
+  // Instantly reopen Welcome dialog
+  setTimeout(openWelcomeScreen, 600);
 };
 
 /* ==========================================================================
@@ -2382,6 +2785,7 @@ function openChatClient() {
   `;
   
   openWindow('chat_win', 'chat.exe - IRC Client', iconHtml, bodyHtml);
+  window.markChecklistTask('chat');
   
   chatStep = 0;
   setTimeout(runChatStep, 1000);
@@ -2397,14 +2801,61 @@ function runChatStep() {
     chatStep = 1;
     setTimeout(runChatStep, 1200);
   } else if (chatStep === 1) {
-    appendChatMsg('Phantom', t('chat_phantom_1'), 'phantom', () => {
-      renderChatOptions([
-        { text: t('chat_option_1a'), next: 2 },
-        { text: t('chat_option_1b'), next: 2 }
-      ]);
-    });
+    const lastDeath = safeStorage.getItem('phantom_last_death');
+    if (lastDeath) {
+      let deathTrollText = "";
+      if (lastDeath === 'cause_volume_mute') {
+        deathTrollText = currentLang === 'ko'
+          ? "저번엔 그 삐- 소리 때문에 귀가 아프다고 비명을 지르더니, 정신 차리고 다시 왔나 보네?"
+          : "Last time, you were screaming because of that beep tone. Ready for another round?";
+      } else if (lastDeath === 'cause_volume_restored') {
+        deathTrollText = currentLang === 'ko'
+          ? "삐- 소리가 끝나면 볼륨을 바로 복구했어야지. 저번에 그렇게 소리 없이 조용히 죽고도 아직 버릇을 못 고쳤어?"
+          : "You forgot to restore the volume after the beep stopped last time. Did you learn your lesson?";
+      } else if (lastDeath === 'cause_volume_zero') {
+        deathTrollText = currentLang === 'ko'
+          ? "볼륨을 계속 0으로 꽁꽁 묶어두면 컴퓨터 상태를 제대로 진단할 수 없어. 저번에 그렇게 먹통이 돼서 죽고도 정신 못 차렸네?"
+          : "Keeping the volume at 0% forever makes you blind to my indicators. You died like that last time, remember?";
+      } else if (lastDeath === 'cause_scan_twice') {
+        deathTrollText = currentLang === 'ko'
+          ? "진단 검사(scan)를 너무 많이 돌려서 시스템을 제풀에 터뜨려 버리더니... 이번엔 제발 좀 조심하는 게 어때?"
+          : "You overloaded the scanner and blew up the motherboard last time... Better be careful now.";
+      } else if (lastDeath === 'cause_alt_tab') {
+        deathTrollText = currentLang === 'ko'
+          ? "한눈팔지 말라고(Alt-Tab) 그렇게 말했는데 딴짓하다 쫓겨나 놓고, 또 이 화면을 켠 거야?"
+          : "I told you not to look away (Alt-Tab), yet you did and crashed. Back for more distraction?";
+      } else {
+        deathTrollText = currentLang === 'ko'
+          ? "지난번엔 아주 비참하게 최후를 맞이하더니, 이번 판은 좀 다를 것 같아? 크크크..."
+          : "You met a tragic end last time. Think this run will be any different? Heh...";
+      }
+
+      appendChatMsg('Phantom', deathTrollText, 'phantom', () => {
+        renderChatOptions([
+          { text: currentLang === 'ko' ? "기.. 기억하고 있는 거야?" : "Y.. You remember?", next: 2.5 },
+          { text: currentLang === 'ko' ? "내 컴퓨터에서 당장 꺼져!" : "Get out of my system!", next: 2.5 }
+        ]);
+      });
+    } else {
+      appendChatMsg('Phantom', t('chat_phantom_1'), 'phantom', () => {
+        renderChatOptions([
+          { text: t('chat_option_1a'), next: 2 },
+          { text: t('chat_option_1b'), next: 2 }
+        ]);
+      });
+    }
   } else if (chatStep === 2) {
     appendChatMsg('Phantom', t('chat_phantom_2'), 'phantom', () => {
+      renderChatOptions([
+        { text: t('chat_option_2a'), next: 3 },
+        { text: t('chat_option_2b'), next: 4 }
+      ]);
+    });
+  } else if (chatStep === 2.5) {
+    const reply = currentLang === 'ko'
+      ? "크크, 당연하지. 난 네 컴퓨터와 머릿속을 다 들여다보니까. 넌 평생 여기서 내 장난감으로 살아야 해. 어디 이번에도 나를 지우기 위해 애써볼 테야?"
+      : "Heh, of course. I peer into your drive and your mind. You will be my toy forever. Wanna try deleting me again?";
+    appendChatMsg('Phantom', reply, 'phantom', () => {
       renderChatOptions([
         { text: t('chat_option_2a'), next: 3 },
         { text: t('chat_option_2b'), next: 4 }
@@ -2434,7 +2885,8 @@ function appendChatMsg(sender, text, type, callback) {
 
   const msg = document.createElement('div');
   msg.className = `chat-msg chat-msg-${type}`;
-  msg.innerText = `${sender}: `;
+  msg.style.whiteSpace = 'pre-wrap';
+  msg.textContent = `${sender}: `;
   history.appendChild(msg);
 
   let charIndex = 0;
@@ -2443,7 +2895,7 @@ function appendChatMsg(sender, text, type, callback) {
     if (!box) return;
 
     if (charIndex < text.length) {
-      msg.innerText += text[charIndex];
+      msg.textContent += text[charIndex];
       charIndex++;
       
       if (window.playTypingSound) {
@@ -3273,7 +3725,7 @@ function openSpotDifferenceGame() {
   const icon = `<svg viewBox="0 0 24 24" fill="#008080"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>`;
   
   const html = getPuzzleHTML();
-  openWindow('puzzle_win', et('puzzle_win_title'), icon, html);
+  openWindow('puzzle_win', t('puzzle_win_title'), icon, html);
   
   setTimeout(() => {
     const input = document.getElementById('puzzle-answer-input');
@@ -3299,37 +3751,43 @@ function getPuzzleHTML() {
     leftArt = "[12:00]\n  \\    ";
     rightArt = "[12:00]\n  /    ";
   } else {
-    leftArt = "⊂( ✖ _ ✖ )⊃";
-    rightArt = "⊂( ✖ 益 ✖ )⊃";
+    // Level 3: Creepy text anomalies based on system health
+    if (systemIntegrity <= 50) {
+      leftArt = "SYSTEM OK\nSTABLE   ";
+      rightArt = "I SEE YOU\nSTABLE   ";
+    } else {
+      leftArt = "I AM SAFE\nHERE     ";
+      rightArt = "HE IS HERE\nHERE     ";
+    }
   }
   
   return `
-    <div class="puzzle-container" style="color: #000; font-family: var(--sys-font); display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; padding: 5px;">
-      <div style="font-size: 11px; color:#333; margin-bottom: 8px;">
-        ${et('puzzle_desc')}
+    <div class="puzzle-container" style="color: #000; font-family: var(--sys-font); display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box; padding: 12px;">
+      <div style="font-size: 14px; color:#333; margin-bottom: 12px; line-height: 1.4;">
+        ${t('puzzle_desc')}
       </div>
-      <div style="font-weight: bold; font-size: 11px; color: #000080; margin-bottom: 8px;" id="puzzle-level-indicator">
-        ${et('puzzle_level')}: ${puzzleLevel} / 3
+      <div style="font-weight: bold; font-size: 14px; color: #000080; margin-bottom: 12px;" id="puzzle-level-indicator">
+        ${t('puzzle_level')}: ${puzzleLevel} / 3
       </div>
       
-      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 12px; font-family: var(--term-font); font-size: 13px; background: #e0e0e0; border: 1px solid #808080; padding: 8px; border-radius:4px; box-shadow: inset 1px 1px 2px #555; height: 110px;">
+      <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 15px; font-family: var(--term-font); font-size: 16px; background: #e0e0e0; border: 1px solid #808080; padding: 10px; border-radius:4px; box-shadow: inset 1px 1px 2px #555; height: 135px;">
         <div style="text-align: center;">
-          <div style="font-size: 9px; font-weight: bold; color: #555; margin-bottom: 3px;">ORIGINAL</div>
-          <pre style="margin:0; background:#f0f0f0; padding:5px; border:1px solid #c0c0c0; text-align: left; line-height: 1.2; font-family: var(--term-font);" id="puzzle-art-left">${leftArt}</pre>
+          <div style="font-size: 11px; font-weight: bold; color: #555; margin-bottom: 5px;">ORIGINAL</div>
+          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 16px;" id="puzzle-art-left">${leftArt}</pre>
         </div>
-        <div style="font-size: 16px; font-weight: bold; color: #888;">vs</div>
+        <div style="font-size: 18px; font-weight: bold; color: #888;">vs</div>
         <div style="text-align: center;">
-          <div style="font-size: 9px; font-weight: bold; color: #555; margin-bottom: 3px;">CORRUPTED</div>
-          <pre style="margin:0; background:#f0f0f0; padding:5px; border:1px solid #c0c0c0; text-align: left; line-height: 1.2; font-family: var(--term-font);" id="puzzle-art-right">${rightArt}</pre>
+          <div style="font-size: 11px; font-weight: bold; color: #555; margin-bottom: 5px;">CORRUPTED</div>
+          <pre style="margin:0; background:#f0f0f0; padding:6px; border:1px solid #c0c0c0; text-align: left; line-height: 1.3; font-family: var(--term-font); font-size: 16px;" id="puzzle-art-right">${rightArt}</pre>
         </div>
       </div>
       
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-        <input type="text" id="puzzle-answer-input" style="width: 60px; text-align: center; font-size: 13px; padding: 2px; border: 1px solid #808080; font-family: var(--term-font);" maxlength="1" placeholder="?">
-        <button class="win-btn" style="padding: 2px 15px;" onclick="submitPuzzleAnswer()">${et('puzzle_submit_btn')}</button>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+        <input type="text" id="puzzle-answer-input" style="width: 80px; text-align: center; font-size: 16px; padding: 4px; border: 1px solid #808080; font-family: var(--term-font);" maxlength="1" placeholder="?">
+        <button class="win-btn" style="padding: 4px 20px;" onclick="submitPuzzleAnswer()">${t('puzzle_submit_btn')}</button>
       </div>
       
-      <div id="puzzle-status" style="font-size: 11px; font-weight: bold; height: 20px; display: flex; align-items: center;"></div>
+      <div id="puzzle-status" style="font-size: 14px; font-weight: bold; height: 22px; display: flex; align-items: center;"></div>
     </div>
   `;
 }
@@ -3346,26 +3804,32 @@ window.submitPuzzleAnswer = function() {
   let target = '';
   if (puzzleLevel === 1) target = 'o';
   else if (puzzleLevel === 2) target = '/';
-  else target = '益';
+  else {
+    if (systemIntegrity <= 50) {
+      target = 'I'; // "SYSTEM OK" vs "I SEE YOU" -> difference is 'I'
+    } else {
+      target = 'H'; // "I AM SAFE" vs "HE IS HERE" -> difference is 'H'
+    }
+  }
   
   if (ans === target) {
     statusEl.style.color = '#008000';
-    playPuzzleSuccessSound();
+    if (window.playPuzzleSuccessSound) playPuzzleSuccessSound();
     
     if (puzzleLevel === 3) {
-      statusEl.innerText = et('puzzle_victory_msg');
+      statusEl.innerText = t('puzzle_victory_msg');
       inputEl.disabled = true;
       const btn = document.querySelector('.puzzle-container button');
       if (btn) btn.disabled = true;
       
-      systemIntegrity = Math.min(100, systemIntegrity + 20);
+      systemIntegrity = Math.min(100, systemIntegrity + 25);
       updateIntegrityDisplay();
       
       setTimeout(() => {
         closeWindow('puzzle_win');
       }, 4500);
     } else {
-      statusEl.innerText = et('puzzle_success_msg');
+      statusEl.innerText = t('puzzle_success_msg');
       puzzleLevel++;
       
       setTimeout(() => {
@@ -3380,7 +3844,7 @@ window.submitPuzzleAnswer = function() {
                 if (e.key === 'Enter') submitPuzzleAnswer();
               });
             }
-          }, 50);
+          }, 120);
         }
       }, 1000);
     }
@@ -3388,7 +3852,7 @@ window.submitPuzzleAnswer = function() {
     statusEl.style.color = '#aa0000';
     statusEl.innerText = currentLang === 'ko' ? "오답입니다! 다시 생각해보세요." : "Wrong character! Try again.";
     
-    playPuzzleFailSound();
+    if (window.playPuzzleFailSound) playPuzzleFailSound();
     
     damageSystemIntegrity(5, "Fatal Exception: 0x000F8 - Spot Anomaly calibration mismatch.", "cause_generic");
   }
